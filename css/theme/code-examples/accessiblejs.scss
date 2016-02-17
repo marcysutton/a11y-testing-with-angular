@@ -1,0 +1,150 @@
+/**
+* Code examples for AccesibleJS
+*
+* Copyright (C) 2013 Marcy Sutton, http://marcysutton.com
+*/
+@import 'mixins';
+@import 'extends';
+
+a#menu_btn {
+  display: inline-block;
+  font-size: 3em;
+  margin: 0 0 2%;
+  padding: 2%;
+  
+  &:before {
+    content: 'i';
+    display: block;
+    font-family: 'entyporegular';
+  }
+}
+// Interactive Tiles ---------------------------
+.reveal {
+  #tiles-version1 {
+    figure.tile {
+      @extend %tile;
+
+      a {
+        @extend %tileAnchor;
+        border: 2px solid #fff;
+
+        &:hover,
+        &:focus {
+          @extend %tileActive;
+        }
+        &.flipped {
+          @extend %flipped;
+        }
+        &:hover,
+        &:focus,
+        &.flipped {
+          h3 {
+            color: #333;
+          }
+        }
+        h3 {
+          @extend %tileHeading;
+        }
+        div {     
+          @include transition(top, 0.5s, ease-out);
+          border: 1px solid #000;          
+          display: block;
+          height: 86%;
+          left: 0;
+          margin: 10px;
+          position: absolute;
+          top: 0;
+          width: 86%;
+        }
+        &.flipped div.tile-back,
+        div.tile-front {
+          top: 0;
+        }
+        div.tile-back {
+          top: 100%;
+          z-index: 1;
+        }
+        &.flipped div.tile-front {
+          top: -100%;
+        }
+      }
+    }
+  }
+  
+  #tiles-version2 {
+    figure.tile {
+      @extend %tile;
+      border: 2px solid #fff;
+
+      &:focus,
+      &:hover {
+        @extend %tileActive;
+        cursor: pointer;
+      }
+      &.flipped {
+        @extend %flipped;
+      }
+      &:hover,
+      &:focus,
+      &.flipped {
+        h3 {
+          color: #333;
+        }
+      }  
+      .hidden {
+    		display: none !important;
+    		visibility: hidden;
+    	}    
+      div.mask {
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        width: 100%; 
+      
+        .tile-inner {
+          @include transition(top, 0.5s, ease-out);
+          height: 200%;
+          overflow: hidden;
+          position: absolute;
+          top: 0;
+          width: 100%; 
+        }
+        .tile-front {
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
+        .tile-back {
+          display: block;
+          height: 100%;
+          left: 0;
+          position: relative;
+          top: 200px;
+          width: 100%;
+          z-index: 1; 
+        }
+      }
+      h3 {
+        @extend %tileHeading;
+        margin-top: 10px;
+      }
+      a {
+        color: #cf6600;
+        display: block;
+        font-size: 0.6em;
+        font-weight: bold;
+        line-height: 1em;
+        margin-top: 10px;
+
+        span {
+          display: block;
+        }
+      }
+      &.flipped div.tile-inner {
+        top: -200px;
+      }
+    }
+  }
+}

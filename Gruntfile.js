@@ -30,10 +30,11 @@ module.exports = function(grunt) {
 				dest: 'js/reveal.min.js'
 			}
 		},
-
+		
 		sass: {
 			core: {
 				files: {
+					'css/theme/marcysutton.css': 'css/theme/source/marcysutton.scss',
 					'css/reveal.css': 'css/reveal.scss',
 				}
 			},

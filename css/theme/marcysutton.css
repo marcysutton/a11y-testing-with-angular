@@ -1,0 +1,366 @@
+/**
+ * Default theme for reveal.js.
+ *
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+body {
+  background: #000 url("../../img/post-alley.png") repeat center top; }
+
+.reveal pre code {
+  font-family: Menlo, Courier, monospace;
+  max-height: 520px; }
+
+.reveal figure.code {
+  box-sizing: border-box;
+  position: relative;
+  width: 90%; }
+  .reveal figure.code *, .reveal figure.code *:before, .reveal figure.code *:after {
+    box-sizing: border-box; }
+  .reveal figure.code pre {
+    box-shadow: none;
+    margin-bottom: 0;
+    width: 100%; }
+    .reveal figure.code pre + figcaption {
+      background-color: rgba(255, 255, 255, 0.85);
+      color: #000;
+      font-size: 0.8em;
+      font-style: normal;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding: 10px 0 10px 20px;
+      text-align: left;
+      width: 100%; }
+
+.reveal .regular-case, .reveal .subhead {
+  text-transform: none; }
+
+.reveal .subhead {
+  font-style: italic; }
+
+.reveal .plain {
+  background-color: transparent; }
+
+/*********************************************
+ * LAYOUTS
+ *********************************************/
+.reveal li .twoThirdsCol {
+  padding-top: 2%; }
+  .reveal li .twoThirdsCol small {
+    clear: both;
+    display: block;
+    text-align: center; }
+
+.reveal .wideCol {
+  vertical-align: top;
+  width: 54%; }
+  .reveal .wideCol.twoThirdsCol {
+    float: left; }
+
+.reveal .skinnyCol {
+  vertical-align: top;
+  width: 44%; }
+  .reveal .skinnyCol.twoThirdsCol {
+    float: left;
+    margin-right: 2%; }
+
+.reveal .twoThirdsCol pre {
+  font-size: .59em;
+  margin-top: 0;
+  width: 100%; }
+
+.reveal .halfCol {
+  display: inline-block;
+  width: 48%; }
+
+/*********************************************
+ * Custom Slides
+ *********************************************/
+#wallace-gromit {
+  background: #181818 url(../../img/wallace-gromit.jpg) no-repeat top right;
+  padding-bottom: 33px; }
+  #wallace-gromit code {
+    background-color: transparent; }
+
+#oh-hai-images {
+  text-align: center; }
+  #oh-hai-images img, #oh-hai-images div {
+    display: inline-block;
+    vertical-align: middle; }
+  #oh-hai-images div {
+    max-width: 320px;
+    margin: 0 20px 0 10px;
+    text-align: center; }
+  #oh-hai-images .angular {
+    max-width: 300px; }
+  #oh-hai-images .axe {
+    background-color: #fff;
+    padding: 10px;
+    width: 300px; }
+  #oh-hai-images .gdi {
+    max-width: 250px; }
+  #oh-hai-images .slack {
+    max-width: 320px; }
+
+/**
+* Code examples for AccesibleJS
+*
+* Copyright (C) 2013 Marcy Sutton, http://marcysutton.com
+*/
+/**
+* Extends for AccesibleJS code examples
+*
+* Copyright (C) 2013 Marcy Sutton, http://marcysutton.com
+*/
+.reveal #tiles-version1 figure.tile, .reveal #tiles-version2 figure.tile {
+  display: inline-block;
+  height: 200px;
+  margin: 0 10px 10px;
+  overflow: hidden;
+  position: relative;
+  width: 200px; }
+
+.reveal #tiles-version1 figure.tile a {
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  height: auto;
+  min-height: 98%;
+  min-width: 98%;
+  overflow: hidden;
+  position: relative;
+  width: auto; }
+
+.reveal #tiles-version1 figure.tile a:hover, .reveal #tiles-version1 figure.tile a:focus, .reveal #tiles-version2 figure.tile:focus, .reveal #tiles-version2 figure.tile:hover {
+  background-color: #fff;
+  color: #333; }
+
+.reveal #tiles-version1 figure.tile a.flipped, .reveal #tiles-version2 figure.tile.flipped {
+  background-color: #c6ff00;
+  color: #333; }
+
+.reveal #tiles-version1 figure.tile a h3, .reveal #tiles-version2 figure.tile h3 {
+  display: inline-block;
+  font-size: 0.75em;
+  vertical-align: middle; }
+
+a#menu_btn {
+  display: inline-block;
+  font-size: 3em;
+  margin: 0 0 2%;
+  padding: 2%; }
+  a#menu_btn:before {
+    content: 'i';
+    display: block;
+    font-family: 'entyporegular'; }
+
+.reveal #tiles-version1 figure.tile a {
+  border: 2px solid #fff; }
+  .reveal #tiles-version1 figure.tile a:hover h3, .reveal #tiles-version1 figure.tile a:focus h3, .reveal #tiles-version1 figure.tile a.flipped h3 {
+    color: #333; }
+  .reveal #tiles-version1 figure.tile a div {
+    -o-transition: top 0.5s ease-out;
+    -ms-transition: top 0.5s ease-out;
+    -moz-transition: top 0.5s ease-out;
+    -webkit-transition: top 0.5s ease-out;
+    transition: top 0.5s ease-out;
+    border: 1px solid #000;
+    display: block;
+    height: 86%;
+    left: 0;
+    margin: 10px;
+    position: absolute;
+    top: 0;
+    width: 86%; }
+  .reveal #tiles-version1 figure.tile a.flipped div.tile-back,
+  .reveal #tiles-version1 figure.tile a div.tile-front {
+    top: 0; }
+  .reveal #tiles-version1 figure.tile a div.tile-back {
+    top: 100%;
+    z-index: 1; }
+  .reveal #tiles-version1 figure.tile a.flipped div.tile-front {
+    top: -100%; }
+
+.reveal #tiles-version2 figure.tile {
+  border: 2px solid #fff; }
+  .reveal #tiles-version2 figure.tile:focus, .reveal #tiles-version2 figure.tile:hover {
+    cursor: pointer; }
+  .reveal #tiles-version2 figure.tile:hover h3, .reveal #tiles-version2 figure.tile:focus h3, .reveal #tiles-version2 figure.tile.flipped h3 {
+    color: #333; }
+  .reveal #tiles-version2 figure.tile .hidden {
+    display: none !important;
+    visibility: hidden; }
+  .reveal #tiles-version2 figure.tile div.mask {
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%; }
+    .reveal #tiles-version2 figure.tile div.mask .tile-inner {
+      -o-transition: top 0.5s ease-out;
+      -ms-transition: top 0.5s ease-out;
+      -moz-transition: top 0.5s ease-out;
+      -webkit-transition: top 0.5s ease-out;
+      transition: top 0.5s ease-out;
+      height: 200%;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      width: 100%; }
+    .reveal #tiles-version2 figure.tile div.mask .tile-front {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%; }
+    .reveal #tiles-version2 figure.tile div.mask .tile-back {
+      display: block;
+      height: 100%;
+      left: 0;
+      position: relative;
+      top: 200px;
+      width: 100%;
+      z-index: 1; }
+  .reveal #tiles-version2 figure.tile h3 {
+    margin-top: 10px; }
+  .reveal #tiles-version2 figure.tile a {
+    color: #cf6600;
+    display: block;
+    font-size: 0.6em;
+    font-weight: bold;
+    line-height: 1em;
+    margin-top: 10px; }
+    .reveal #tiles-version2 figure.tile a span {
+      display: block; }
+  .reveal #tiles-version2 figure.tile.flipped div.tile-inner {
+    top: -200px; }
+
+/**
+* Code examples for AccesibleJS
+*
+* Copyright (C) 2013 Marcy Sutton, http://marcysutton.com
+*/
+/**
+* Extends for AccesibleJS code examples
+*
+* Copyright (C) 2013 Marcy Sutton, http://marcysutton.com
+*/
+.reveal #tiles-version1 figure.tile, .reveal #tiles-version2 figure.tile {
+  display: inline-block;
+  height: 200px;
+  margin: 0 10px 10px;
+  overflow: hidden;
+  position: relative;
+  width: 200px; }
+
+.reveal #tiles-version1 figure.tile a {
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  height: auto;
+  min-height: 98%;
+  min-width: 98%;
+  overflow: hidden;
+  position: relative;
+  width: auto; }
+
+.reveal #tiles-version1 figure.tile a:hover, .reveal #tiles-version1 figure.tile a:focus, .reveal #tiles-version2 figure.tile:focus, .reveal #tiles-version2 figure.tile:hover {
+  background-color: #fff;
+  color: #333; }
+
+.reveal #tiles-version1 figure.tile a.flipped, .reveal #tiles-version2 figure.tile.flipped {
+  background-color: #c6ff00;
+  color: #333; }
+
+.reveal #tiles-version1 figure.tile a h3, .reveal #tiles-version2 figure.tile h3 {
+  display: inline-block;
+  font-size: 0.75em;
+  vertical-align: middle; }
+
+a#menu_btn {
+  display: inline-block;
+  font-size: 3em;
+  margin: 0 0 2%;
+  padding: 2%; }
+  a#menu_btn:before {
+    content: 'i';
+    display: block;
+    font-family: 'entyporegular'; }
+
+.reveal #tiles-version1 figure.tile a {
+  border: 2px solid #fff; }
+  .reveal #tiles-version1 figure.tile a:hover h3, .reveal #tiles-version1 figure.tile a:focus h3, .reveal #tiles-version1 figure.tile a.flipped h3 {
+    color: #333; }
+  .reveal #tiles-version1 figure.tile a div {
+    -o-transition: top 0.5s ease-out;
+    -ms-transition: top 0.5s ease-out;
+    -moz-transition: top 0.5s ease-out;
+    -webkit-transition: top 0.5s ease-out;
+    transition: top 0.5s ease-out;
+    border: 1px solid #000;
+    display: block;
+    height: 86%;
+    left: 0;
+    margin: 10px;
+    position: absolute;
+    top: 0;
+    width: 86%; }
+  .reveal #tiles-version1 figure.tile a.flipped div.tile-back,
+  .reveal #tiles-version1 figure.tile a div.tile-front {
+    top: 0; }
+  .reveal #tiles-version1 figure.tile a div.tile-back {
+    top: 100%;
+    z-index: 1; }
+  .reveal #tiles-version1 figure.tile a.flipped div.tile-front {
+    top: -100%; }
+
+.reveal #tiles-version2 figure.tile {
+  border: 2px solid #fff; }
+  .reveal #tiles-version2 figure.tile:focus, .reveal #tiles-version2 figure.tile:hover {
+    cursor: pointer; }
+  .reveal #tiles-version2 figure.tile:hover h3, .reveal #tiles-version2 figure.tile:focus h3, .reveal #tiles-version2 figure.tile.flipped h3 {
+    color: #333; }
+  .reveal #tiles-version2 figure.tile .hidden {
+    display: none !important;
+    visibility: hidden; }
+  .reveal #tiles-version2 figure.tile div.mask {
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%; }
+    .reveal #tiles-version2 figure.tile div.mask .tile-inner {
+      -o-transition: top 0.5s ease-out;
+      -ms-transition: top 0.5s ease-out;
+      -moz-transition: top 0.5s ease-out;
+      -webkit-transition: top 0.5s ease-out;
+      transition: top 0.5s ease-out;
+      height: 200%;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      width: 100%; }
+    .reveal #tiles-version2 figure.tile div.mask .tile-front {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%; }
+    .reveal #tiles-version2 figure.tile div.mask .tile-back {
+      display: block;
+      height: 100%;
+      left: 0;
+      position: relative;
+      top: 200px;
+      width: 100%;
+      z-index: 1; }
+  .reveal #tiles-version2 figure.tile h3 {
+    margin-top: 10px; }
+  .reveal #tiles-version2 figure.tile a {
+    color: #cf6600;
+    display: block;
+    font-size: 0.6em;
+    font-weight: bold;
+    line-height: 1em;
+    margin-top: 10px; }
+    .reveal #tiles-version2 figure.tile a span {
+      display: block; }
+  .reveal #tiles-version2 figure.tile.flipped div.tile-inner {
+    top: -200px; }

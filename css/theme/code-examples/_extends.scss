@@ -1,0 +1,48 @@
+/**
+* Extends for AccesibleJS code examples
+*
+* Copyright (C) 2013 Marcy Sutton, http://marcysutton.com
+*/
+
+%tile {
+  display: inline-block;
+  height: 200px;
+  margin: 0 10px 10px;
+  overflow: hidden;
+  position: relative;
+  width: 200px;
+}
+%tileAnchor {
+  color: #fff;
+  display: block;
+  font-weight:bold;
+  height: auto;
+  min-height: 98%;
+  min-width: 98%;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+}
+%tileActive {
+  background-color: #fff;
+  color: #333;
+}
+%flipped {
+  background-color: #c6ff00;
+  color: #333;
+}
+%tileHeading {
+  display: inline-block;
+  // font-family: $mainFont;
+  font-size: 0.75em;
+  vertical-align: middle;
+}
+%tileDiv {
+  display: block;
+  height: 86%;
+  left: 0;
+  margin: 10px;
+  position: absolute;
+  top: 0;
+  width: 86%;
+}

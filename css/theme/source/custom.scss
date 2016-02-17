@@ -1,0 +1,131 @@
+$codeBgColor: #181818;
+
+body {
+  background: #000 url('../../img/post-alley.png') repeat center top;
+}
+
+.reveal {
+  pre code {
+    font-family: Menlo, Courier, monospace;
+    max-height: 520px;
+  }
+  figure.code {
+    box-sizing: border-box;
+    position: relative;
+    width: 90%;
+
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+
+    pre {
+      box-shadow: none;
+      margin-bottom: 0;
+      width: 100%;
+
+      &+ figcaption {
+        background-color: rgba(255, 255, 255, 0.85);
+        color: #000;
+        font-size: 0.8em;
+        font-style: normal;
+        font-weight: bold;
+        margin-bottom: 25px;
+        padding: 10px 0 10px 20px;
+        text-align: left;
+        width: 100%;
+      }
+    }
+  }
+  .regular-case {
+    text-transform: none;
+  }
+  .subhead {
+    font-style: italic;
+    @extend .regular-case;
+  }
+  .plain {
+    background-color: transparent;
+  }
+}
+/*********************************************
+ * LAYOUTS
+ *********************************************/
+.reveal li .twoThirdsCol {
+  padding-top: 2%;
+
+  small {
+    clear: both;
+    display: block;
+    text-align: center;
+  }
+}
+.reveal .wideCol {
+  vertical-align: top;
+  width: 54%;
+
+  &.twoThirdsCol {
+    float: left;
+  }
+}
+.reveal .skinnyCol {
+  vertical-align: top;
+  width: 44%;
+
+  &.twoThirdsCol {
+    float: left;
+    margin-right: 2%;
+  }
+}
+.reveal .twoThirdsCol pre {
+  font-size: .59em;
+  margin-top: 0;
+  width: 100%;
+}
+.reveal .halfCol {
+  display: inline-block;
+  width: 48%;
+}
+
+/*********************************************
+ * Custom Slides
+ *********************************************/
+
+#wallace-gromit {
+  background: $codeBgColor url(../../img/wallace-gromit.jpg) no-repeat top right;
+  padding-bottom: 33px;
+
+  code {
+    background-color: transparent;
+  }
+}
+#oh-hai-images {
+  text-align: center;
+
+  img, div {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  div {
+    max-width: 320px;
+    margin: 0 20px 0 10px;
+    text-align: center;
+  }
+  .angular {
+    max-width: 300px;
+  }
+  .axe {
+    background-color: #fff;
+    padding: 10px;
+    width: 300px;
+  }
+  .gdi {
+    max-width: 250px;
+  }
+  .slack {
+    max-width: 320px;
+  }
+}
+
+// Code examples -------------------------------
+@import "../code-examples/accessiblejs"
+// ---------------------------------------------

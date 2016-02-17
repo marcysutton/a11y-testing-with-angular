@@ -285,18 +285,31 @@
           <h2>Skip Links</h2>
 				  <p>Useful for everyone. Make them visible on focus:</p>
 				  <figure class="code">
-						<pre><code>
-  $('.skip-links').find('a').on 'focus blur click', ($event) ->
+						<pre><code class="css" style="max-height: 400px;"> 
+  li.skip-link {
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: absolute;
 
-    $(this).css({'left':'0'}) if $event.type == 'focus'
-    $(this).css({'left':'-999999px'}) if $event.type == 'blur'
-
-    if $event.type == 'click'
-      $event.preventDefault()
-      $(this).attr('href').focus()
+    a {
+      display: block;
+      position: absolute;
+      left: -10000px;
+      top: 0;
+      width: 200px;
+    
+      &:focus {
+        left: 0;
+      }
+    }
+  }
+  [tabindex="-1"]:focus {
+    outline: none;
+  }
 
 	  					</code></pre>
-							<figcaption><em>jQuery &amp; Coffeescript</em></figcaption>
+							<figcaption><em>SCSS</em></figcaption>
 						</figure>
 						<small><a href="http://codepen.io/marcysutton/pen/PZgbmm">http://codepen.io/marcysutton/pen/PZgbmm</a></small>
 				  </section>

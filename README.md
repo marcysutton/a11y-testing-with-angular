@@ -1,8 +1,15 @@
-# Accessible JavaScript
+# Accessibility and Performance
 
-A presentation on accessibility and JavaScript by Marcy Sutton, front-end engineer at Deque Systems.
+A presentation on performance and accessibility, including browser rendering quirks and best practices for universal JavaScript apps.
 
-Slide URL: [http://marcysutton.github.io/accessible-javascript](http://marcysutton.github.io/accessible-javascript)
+By Marcy Sutton, Senior Front-end Engineer at Deque Systems
+
+##Presenting at:
+- Fronteers Spring Thing
+- Seattle JS
+- Generate NYC
+
+Slide URL: [http://marcysutton.github.io/a11y-perf](http://marcysutton.github.io/a11y-perf)
 
 ## Installation
 
@@ -16,7 +23,7 @@ Some reveal.js features, like external Markdown and speaker notes, require that 
 
 4. Clone the repository
    ```sh
-   $ git clone https://github.com/marcysutton/accessible-javascript.git
+   $ git clone https://github.com/marcysutton/a11y-perf.git
    ```
 
 5. Navigate to the project folder

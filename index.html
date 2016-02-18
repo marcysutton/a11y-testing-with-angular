@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Accessible JavaScript - Marcy Sutton</title>
+		<title>Accessibility and Performance - Marcy Sutton</title>
 
-		<meta name="description" content="A presentation on JavaScript accessibility basics">
+		<meta name="description" content="A presentation on accessibility and performance for Fronteers and Generate NYC">
 		<meta name="author" content="Marcy Sutton">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -41,10 +41,9 @@
 
 		<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Accessible JavaScript</h1>
+					<h1>Accessibility and Performance</h1>
 					<p>
 						Created by <a href="http://marcysutton.com">Marcy Sutton</a> / <a href="http://twitter.com/marcysutton">@marcysutton</a><br>
 						Senior Front-End Engineer, Deque Systems
@@ -64,365 +63,25 @@
 				</section>
 
 				<section>
-					<h2>Remember the old days?</h2>
-          <ul>
-            <li class="fragment">Flash and keyboard navigation</li>
-            <li class="fragment">Screen readers and JavaScript</li>
-            <li class="fragment">Page reloads for data interactions</li>
-            <li class="fragment">Car phones in Miatas</li>
-          </ul>
-          <p style="margin-top: 5%" class="fragment">The Web has evolved. Yay! <br />How do we not repeat the same mistakes?</p>
-          <aside class="notes">
-            <ul>
-              <li>Browser inconsistencies w/ keyboard nav were a bitch</li>
-              <li>Flash accessibility required more effort. Poor access due to the nature of the "experience" (time-based, rapidly changing)</li>
-              <li>No fallback content == bad SEO. No live text in Flash even bad for Google (embedded in images or vectors)</li>
-            </ul>
-          </aside>
-				</section>
-
-				<section>
 					<h2>What is accessibility?</h2>
 					<h3><a href="http://www.w3.org/WAI/intro/accessibility.php" target="_blank" title="Link opens in a new window">W3.org</a></h3>
-          <blockquote>The Web is fundamentally designed to work for all people, whatever their hardware, software, language, culture, location, or physical or mental ability.</blockquote>
+		        	<blockquote>The Web is fundamentally designed to work for all people, whatever their hardware, software, language, culture, location, or physical or mental ability.</blockquote>
 				</section>
 
-        <section>
-          <h2>Who are we talking about?</h2>
-          <ul>
-            <li>Blind &amp; Low Vision</li>
-            <li>Color-Blind</li>
-            <li>Deaf &amp; Hard of Hearing</li>
-            <li>Impaired Mobility</li>
-            <li>Cognitive/Learning</li>
-            <li class="fragment" style="margin-top: 8%;">AND EVERYONE ELSE</li>
-          </ul>
-          <aside class="notes">
-            <p>Note about aging population</p>
-          </aside>
-        </section>
-
-        <section>
-          <h2>Problematic Items</h2>
-            <div id="webaim-survey-problematic-items" style="background: url(img/webaim-survey-problematic-items.png) no-repeat center top; background-size: 60% auto; padding-top: 40%; width: 100%;">
-              <ul class="offscreen">
-                <li>The presence of inaccessible Flash content</li>
-                <li>CAPTCHA - images presenting text used to verify that you are a human user</li>
-                <li>Links or buttons that do not make sense</li>
-                <li>Images with missing or improper descriptions (alt text)</li>
-                <li>Screens or parts of screens that change unexpectedly</li>
-                <li>Complex or difficult forms</li>
-                <li>Lack of keyboard accessibility</li>
-                <li>Missing or improper headings</li>
-                <li>Too many links or navigation items</li>
-                <li>Complex data tables</li>
-                <li>Inaccessible or missing search functionality</li>
-                <li>Lack of "skip to main content" or "skip navigation" links</li>
-              </ul>
-            </div>
-            <small>Source: <a href="http://webaim.org/projects/screenreadersurvey4/" target="_blank" title="Link opens in a new window">WebAIM Screen Reader Survey, May 2012<span class="offscreen"> opens in a new window</span></a></small>
-        </section>
-
-        <section>
-        	<h2>Problematic Items&hellip;Updated</h2>
-        	<ul>
-        		<li>Icon buttons without text</li>
-        		<li>Unlabeled form controls</li>
-        		<li>Click events on DIVs</li>
-        		<li>Dropping keyboard focus</li>
-        		<li>Too subtle color contrast</li>
-        	</ul>
-        </section>
-
-				<section>
-				  <h2>Web pages are more than <br>just visible</h2>
-				  <div>
-  				  <ul>
-  				    <li>Semantic HTML markup</li>
-  				    <li>Headings</li>
-  				    <li>Landmark roles</li>
-  				    <li>Form labels</li>
-  				    <li>Image alt text</li>
-  				    <li>Visually hidden text</li>
-            </ul>
-          </div>
-        </section>
-
-				<section>
-					<h2><a href="https://www.w3.org/TR/wai-aria/">WAI-ARIA</a></h2>
-					<h3 class="regular-case">Web Accessibility Initiative - <br>Accessible Rich Internet Applications</h3>
-					<blockquote>A standard set of HTML attributes for applying accessible roles, states and properties</blockquote>
-					–
-					<p><a href="https://www.w3.org/TR/aria-in-html/#notes-on-aria-use-in-html">Notes on ARIA use in HTML</a></p>
-				</section>
-
-        <section>
-          <h2>Creating accessible actions</h2>
-          <div class="">
-            <figure class="code">
-	            <pre><code class="html">
-  &lt;a ng-href="#/wrong-trousers">&lt;/a>
-
-  &lt;button ng-click="start()">
-    &lt;i class="icon">&lt;/i>
-  &lt;/button>
-	            </code></pre>
-	            <figcaption>Empty buttons and links: bad!</figcaption>
-	          </figure>
-				  </div>
-          <div class="fragment">
-            <figure class="code">
-              <pre id="wallace-gromit"><code class="html">
-  &lt;a ng-href="#/wrong-trousers">Techno-Trousers&lt;/a>
-
-  &lt;button ng-click="start()">
-      &lt;i class="icon" aria-label="Start Morning Routine">&lt;/i>
-  &lt;/button>
-              </code></pre>
-              <figcaption>Unique and purposeful link text: good!</figcaption>
-            </figure>
-          </div>
-				</section>
-
-				<section data-transition="none">
-          <h2>Creating accessible actions<span class="offscreen">(cont'd)</span></h2>
-          <div class="">
-            <figure class="code">
-	            <pre><code class="html">
-  &lt;a ng-href="#/wrong-trousers">&lt;/a>
-
-  &lt;button ng-click="start()">
-    &lt;i class="icon">&lt;/i>
-  &lt;/button>
-	            </code></pre>
-	            <figcaption>Empty buttons and links: bad!</figcaption>
-	          </figure>
-				  </div>
-          <div class="">
-            <figure class="code">
-              <pre id="wallace-gromit"><code class="html">
-  &lt;a ng-href="the-wrong-trousers.html">Techno-Trousers&lt;/a>
-
-  &lt;button ng-click="start()">
-      &lt;span class="visuallyhidden">Start Morning Routine&lt;/span>
-      &lt;i class="icon" aria-hidden="true">&lt;/i>
-  &lt;/button>
-              </code></pre>
-              <figcaption>Broader support: good!</figcaption>
-            </figure>
-          </div>
-				</section>
-
-				<section>
-			    <h2>&ldquo;Hidden&rdquo; vs. &ldquo;Offscreen&rdquo;</h2>
-			    <h3>CSS</h3>
-				  <div class="halfCol">
-				  	<figure class="code">
-	  				  <pre><code class="css">
-  .reallyHidden {
-    display: none;
-    visibility: hidden;
-  }
-
-
-
-
-
-
-	  				  </code></pre>
-	  				  <figcaption>CSS</figcaption>
-					  </figure>
-					</div>
-				  <div class="halfCol">
-				  	<figure class="code">
-	  				  <pre><code class="css">
-  .visuallyhidden {
-    border: 0; 
-    clip: rect(0 0 0 0); 
-    height: 1px; 
-    margin: -1px; 
-    overflow: hidden; 
-    padding: 0; 
-    position: absolute; 
-    width: 1px;
-  }
-	  				  </code></pre>
-	  				  <figcaption>CSS</figcaption>
-					  </figure>
-					</div>
-				  <div class="clear"></div>
-				  <p><a href="http://webaim.org/techniques/css/invisiblecontent/">WebAIM on invisible content</a></p>
-				</section>
-
-			  <section>
-          <h2>Keyboard navigation</h2>
-          <p><em>Any element can receive focus with a little help.</em></p>
-				  <figure class="code">
-  					<pre><code>
-   &lt;div class="nav-right" tabindex="0" role="button"&gt;
-      Next Slide
-   &lt;/div&gt;
-  					</code></pre>
-  					<figcaption><em>HTML</em></figcaption>
-				  </figure>
-				  <figure class="code">
-					  <pre><code>
-  $('.nav-right').on 'click keydown', (event) ->
-      if event.type === 'click' || event.keyCode === 13
-          navRightClicked()
-					  </code></pre>
-						<figcaption><em>jQuery &amp; Coffeescript</em></figcaption>
-				  </figure>
-			  </section>
-
-				<section>
-				  <h2>Skip Links</h2>
-				  <!-- insert gif/video here -->
-				  <video controls src="video/skip-links.mp4" style="max-height:500px;"></video>
-			  </section>
-
-			  <section>
-          <h2>Skip Links</h2>
-				  <p>Useful for everyone. Make them visible on focus:</p>
-				  <figure class="code">
-						<pre><code>
-  $('.skip-links').find('a').on 'focus blur click', ($event) ->
-
-    $(this).css({'left':'0'}) if $event.type == 'focus'
-    $(this).css({'left':'-999999px'}) if $event.type == 'blur'
-
-    if $event.type == 'click'
-      $event.preventDefault()
-      $(this).attr('href').focus()
-
-	  					</code></pre>
-							<figcaption><em>jQuery &amp; Coffeescript</em></figcaption>
-						</figure>
-						<small><a href="http://codepen.io/marcysutton/pen/PZgbmm">http://codepen.io/marcysutton/pen/PZgbmm</a></small>
-				  </section>
-
-					<section>
-						<h2>Testing for Accessibility</h2>
-						<blockquote>We can achieve digital equality by making accessibility part of our web development workflow.</blockquote>
-					</section>
-
-					<section>
-						<h2 class="regular-case">Hi aXe-core</h2>
-						<ul>
-							<li>Browser extensions</li>
-							<li>Unit test integration</li>
-							<li>Selenium Webdriver integration</li>
-						</ul>
-					</section>
-
-					<section>
-						<h3><span class="regular-case">aXe</span> Chrome Extension</h3>
-						<a href="https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US" target="_blank" class="img" style="margin-bottom: 0;">
-							<img src="img/axe-chrome-extension.png" alt="aXe Chrome extension" class="plain">
-						</a>
-					</section>
-
-					<section>
-						<h3>Unit Test Integration</h3>
-						<figure>
-							<pre><code class="javascript">
-  describe('Form component', function () {
-    'use strict';
-
-    document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeend',
-      '<fieldset id="username">' +
-      '<label for="firstname">First name</label>' +
-      '<input type="text" id="firstname">' +
-	  '</fieldset>');
-
-	it('should report that HTML is good', function (done) {
-	  var n = document.getElementById('username');
-	  axe.a11yCheck(n, null, function (result) {
-	  	expect(result.violations.length).toBe(0);
-	  	done();
-	  });
-	});
-							</code></pre>
-						</figure>
-						<p><small><a href="https://github.com/marcysutton/axe-jasmine-unit">https://github.com/marcysutton/axe-jasmine-unit</a></small></p>
-					</section>
-
-					<section>
-						<h3>Webdriver Integration</h3>
-						<figure>
-							<pre><code class="javascript">
-	var selenium = require('selenium-webdriver'),
-	    AxeBuilder = require('axe-webdriverjs');
-
-	describe('Selenium-aXe Tutorial', function() {
-	    beforeEach(function(done) {
-	        this.driver = new selenium.Builder()
-	            .forBrowser('firefox').build();
-	        this.driver
-	            .get('http://www.deque.com/')
-	            .then(function() { done(); });
-	    });
-	    afterEach(function() {
-	        this.driver.quit();
-	    });
-	    it('Should have no accessibility violations', function(done) {
-	        AxeBuilder(this.driver)
-	            .analyze(function(results) {
-	                expect(results.violations.length).toBe(0);
-	                done();
-	            })
-	    });
-	});
-							</code></pre>
-						</figure>
-							<p><small><a href="https://github.com/marcysutton/axe-webdriverjs-demo">https://github.com/marcysutton/axe-webdriverjs-demo</a></small><p>
-					</section>
-
-					<section>
-						<h3>Learn more on Github</h3>
-						<a href="https://github.com/dequelabs"><img src="img/deque-labs.jpg" alt="Deque Labs on Github" style="max-width: 700px;"></a>
-					</section>
-
-          <section>
-            <h2>Mobile</h2>
-            <blockquote class="twitter-tweet" align="center" data-conversation="none"><p><a href="https://twitter.com/marcysutton">@marcysutton</a> iPhone was the 1ST piece of tech I could use out of the box. Normally need sighted help to get screen reader installed etc.</p>&mdash; Steve Sawczyn (@steveofmaine) <a href="https://twitter.com/steveofmaine/statuses/388539435643441152">October 11, 2013</a></blockquote>
-            <blockquote class="twitter-tweet" align="center" data-conversation="none"><p><a href="https://twitter.com/marcysutton">@marcysutton</a> If you think about it, I can&#39;t even buy and use a microwave until someone helps me label touchpad.</p>&mdash; Steve Sawczyn (@steveofmaine) <a href="https://twitter.com/steveofmaine/statuses/388539569076850688">October 11, 2013</a></blockquote>
-            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </section>
-
-          <section>
-            <h2>Should your mobile site <br>be accessible?</h2>
-            <div class="fragment">
-              <h3>YES.</h3>
-              <p><a href="https://www.youtube.com/watch?v=Jp6-9X-ZClk" target="_blank"><em>https://www.youtube.com/watch?v=Jp6-9X-ZClk</em></a></p>
-            </div>
-          </section>
-
-        <section>
-				  <h2>What else?</h2>
-				  <ul>
-				    <li class="fragment">Transcripts &amp; Captions</li>
-				    <li class="fragment">Captcha Alternatives</li>
-				    <li class="fragment">Progressive Enhancement</li>
-				  </ul>
-        </section>
-
-				<section>
-				  <h2>It’s About User Experience.</h2>
-				  <p><em>We can make it better.</em></p>
-  				<aside class="notes">
-  				  <h2>What else?</h2>
-  			    <ul>
-  			      <li>Feedback: hover/focus, updating widget instructions, external links, etc.</li>
-  			      <li>Tab order</li>
-  			      <li>Not trapping people in widgets they can’t get out of</li>
-  				    <li>Touch: make sure your events work</li>
-  			    </ul>
-			      <ul>
-  				    <li>A whole other talk: How accessibility and automated testing are BFFs</li>
-  			    </ul>
-			    </aside>
-				</section>
+		        <section>
+		          <h2>Who are we talking about?</h2>
+		          <ul>
+		            <li>Blind &amp; Low Vision</li>
+		            <li>Color-Blind</li>
+		            <li>Deaf &amp; Hard of Hearing</li>
+		            <li>Impaired Mobility</li>
+		            <li>Cognitive/Learning</li>
+		            <li class="fragment" style="margin-top: 8%;">AND EVERYONE ELSE</li>
+		          </ul>
+		          <aside class="notes">
+		            <p>Note about aging population</p>
+		          </aside>
+		        </section>
 
 				<section data-background-color="#ffffff">
 					<h2>Questions?</h2>

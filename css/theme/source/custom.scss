@@ -1,10 +1,54 @@
-$codeBgColor: #181818;
+@import 'white';
 
-body {
-  background: #000 url('../../img/post-alley.png') repeat center top;
-}
+$codeBgColor: #181818;
+$dequeLogoColor: #00274d;
+$dequeBgColor: #BFC9D3;
+$accentColor: #8dc63f;
+
+$tablet: 'screen and (max-width: 900px)';
+$mobile: 'screen and (max-width: 600px)';
 
 .reveal {
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: none;
+  }
+  .h1-style {
+    @extend h1;
+  }
+  .h2-style {
+    @extend h2;
+  }
+  .h3-style {
+    @extend h3;
+  }
+  .h4-style {
+    @extend h4;
+  }
+  .subhead {
+    @extend h4;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .all-caps {
+    text-transform: uppercase;
+  }
+  .offscreen {
+    position: absolute;
+    left: -500000px;
+  }
+  .progress {
+    background-color: $dequeBgColor;
+    height: 15px;
+
+    span {
+      background: $accentColor;
+      box-shadow: 2px 1px 3px #666;
+    }
+  }
+  .controls {
+    bottom: 110px;
+  }
+
   pre code {
     font-family: Menlo, Courier, monospace;
     max-height: 520px;
@@ -86,9 +130,109 @@ body {
   width: 48%;
 }
 
+.reveal .layeredFragments {
+  margin: 0 auto;
+  min-height: 1000px;
+  position: relative;
+  width: 100%;
+
+  &>img, 
+  &>figure {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0;
+    width: 100%;
+  }
+  &.wordcloud {
+    position: absolute;
+    top: 0;
+
+    .fragment {
+      position: absolute;
+    }
+  }
+}
+.reveal {
+  .responsive-video {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+
+    iframe, object, embed, video {
+      position:absolute;
+      top: 0;
+      left: 0;
+      max-height: 720px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
 /*********************************************
  * Custom Slides
  *********************************************/
+
+.deque-title-slide {
+  &.slide-background:after {
+    background-color: $dequeBgColor;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 100px;
+    max-height: 10%;
+    position: absolute;
+    width: 100%;
+  }
+  .left {
+    float: left;
+  }
+    img.deque {
+      max-width: 400px;
+      margin: -8% 0 0;
+    }
+  .right {
+    float: right;
+    padding-top: 8%;
+    text-align: left;
+    width: 65%;
+  }
+  @media #{$tablet} {
+    .left {
+      img.deque {
+        max-width: 300px;
+      }
+    }
+    .right {
+      h1 {
+        font-size: 2em;
+      }
+    }
+  }
+  @media #{$mobile} {
+    .left {
+      float: none;
+      img.deque {
+        margin: 0 auto;
+      }
+    }
+    .right {
+      float: none;
+      margin: 0 auto;
+      width: 90%;
+      h1 {
+        font-size: 1.75em;
+        text-align:  center;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+  }
+}
 
 #wallace-gromit {
   background: $codeBgColor url(../../img/wallace-gromit.jpg) no-repeat top right;
@@ -125,7 +269,3 @@ body {
     max-width: 320px;
   }
 }
-
-// Code examples -------------------------------
-@import "../code-examples/accessiblejs"
-// ---------------------------------------------

@@ -5,7 +5,7 @@
 /* Tomorrow Comment */
 .hljs-comment,
 .hljs-quote {
-  color: #969896;
+  color: #8e908c;
 }
 
 /* Tomorrow Red */
@@ -17,7 +17,7 @@
 .hljs-selector-class,
 .hljs-regexp,
 .hljs-deletion {
-  color: #d54e53;
+  color: #c82829;
 }
 
 /* Tomorrow Orange */
@@ -29,12 +29,12 @@
 .hljs-params,
 .hljs-meta,
 .hljs-link {
-  color: #e78c45;
+  color: #f5871f;
 }
 
 /* Tomorrow Yellow */
 .hljs-attribute {
-  color: #e7c547;
+  color: #BD9507;
 }
 
 /* Tomorrow Green */
@@ -42,19 +42,19 @@
 .hljs-symbol,
 .hljs-bullet,
 .hljs-addition {
-  color: #b9ca4a;
+  color: #718c00;
 }
 
 /* Tomorrow Blue */
 .hljs-title,
 .hljs-section {
-  color: #7aa6da;
+  color: #4271ae;
 }
 
 /* Tomorrow Purple */
 .hljs-keyword,
 .hljs-selector-tag {
-  color: #c397d8;
+  color: #8959a8;
 }
 
 .hljs {

@@ -14,16 +14,18 @@
   display: none;
   visibility: hidden;
 }
-
-.reveal .slides > section.present > .accessibilityWrapper {
+.reveal.overview .slides>section>.accessibilityWrapper,
+.reveal.overview .slides>section>section>.accessibilityWrapper {
+  display: block;
+  visibility: visible;
+}
+.reveal .slides section.present > .accessibilityWrapper {
   display: block;
   visibility: visible;
   outline: none;
 }
 .reveal .slides.staticPage > section {
   display: block !important;
-}
-.reveal .slides > section > .accessibilityWrapper {
 }
 .reveal #global-skip-link {
   display: block;
@@ -51,9 +53,4 @@
   padding: 5px 10px;
   position: absolute;
   white-space: nowrap;
-}
-.offscreen {
-  display: block;
-  left: -50000px;
-  position: absolute;
 }

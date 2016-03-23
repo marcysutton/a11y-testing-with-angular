@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 		sass: {
 			core: {
 				files: {
-					'css/theme/marcysutton.css': 'css/theme/source/marcysutton.scss',
+					'css/theme/custom.css': 'css/theme/source/custom.scss',
 					'css/reveal.css': 'css/reveal.scss',
 				}
 			},

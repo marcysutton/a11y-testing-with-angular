@@ -1,32 +1,57 @@
 /*!
- * SlideAccessibility
+ * Slide Accessibility
  *
  * The default CSS and JavaScript of Reveal.js has poor keyboard and screen reader
- * accessibility because all slides are always "visible". This plugin wraps slide
+ * accessibility because slides are not fully hidden after animating. This plugin wraps slide
  * contents in an element that can be hidden with CSS and not affect slide transitions.
  * It requires the 'linear' transition to effectively move between slides when CSS is
  * applied.
  *
+ * It also includes an auto-generated skip links plugin.
+ *
  * MIT licensed
  *
- * Copyright (C) 2014 Marcy Sutton, http://marcysutton.com
+ * Copyright (C) 2015 Marcy Sutton, http://marcysutton.com
  */
+
+var PLUGIN_SLIDES = [];
 
 var SlideAccessibility = (function(){
 
-	'use strict';
+  'use strict';
 
-  var SLIDE_SELECTOR = '.slides section';
+  var SLIDE_SELECTOR = '.slides > section';
 
   // get slides, wrap contents in 'accessibilityWrapper'
+  // only wrap sections containing content
   var slides = document.querySelectorAll( SLIDE_SELECTOR );
-  for(var i=0; i<slides.length; i++){
-    slides[i].setAttribute('data-id', i);
-    var contents = slides[i].innerHTML;
-    slides[i].innerHTML = '<div class="accessibilityWrapper">'+
-      contents+'</div>';
-  }
 
+  for (var i=0; i<slides.length; i++) {
+    // if slide has child sections, loop through those instead
+    var nestedSlides = slides[i].querySelectorAll('section');
+    if (nestedSlides.length > 0) {
+      for (var k=0; k < nestedSlides.length; k++) {
+        decorateSlide(nestedSlides, k, i);
+      }
+    }
+    else {
+      // filter out nested slides
+      if (!slides[i].classList.contains('stack')) {
+        decorateSlide(slides, i);
+      }
+    }
+  }
+  function decorateSlide (slideArray, index, outerIndex) {
+    // populate new array of actual slides
+    PLUGIN_SLIDES.push(slideArray[index]);
+
+    // provide nested URL fragments
+    var urlFragment = outerIndex !== undefined ? (outerIndex + '/' + index) : index;
+    slideArray[index].setAttribute('data-id', urlFragment);
+
+    var contents = slideArray[index].innerHTML;
+    slideArray[index].innerHTML = '<div class="accessibilityWrapper">' + contents + '</div>';
+  }
 })();
 
 /*!
@@ -40,17 +65,19 @@ var SkipLinks = (function(){
 
   'use strict';
 
-  // if you change the ID's for the skip links,
-  // be sure to update the CSS as well
-  var GLOBAL_SKIP_LINK_ID = 'global-skip-link',
+
+  var DO_SKIP_LINKS = false,
+
+    // if you change element ID's,
+    // be sure to update the CSS as well
+    GLOBAL_SKIP_LINK_ID = 'global-skip-link',
     SLIDE_SKIP_LINKS_ID = 'table-of-contents',
     GLOBAL_SKIP_LINK_TEXT = 'Show navigation',
 
-    SLIDE_SELECTOR = '.slides section',
     SKIP_LINK_TARGET_SELECTOR = '.accessibilityWrapper',
     CONTROLS_SELECTOR = '.controls',
 
-    SLIDES = document.querySelectorAll( SLIDE_SELECTOR ),
+    SLIDES = PLUGIN_SLIDES,
     NUM_SLIDES = SLIDES.length,
 
     // Cached references to DOM elements
@@ -64,7 +91,7 @@ var SkipLinks = (function(){
       dom.controls = document.querySelector( CONTROLS_SELECTOR );
     }
 
-    // buildSkipLinks();
+    if ( DO_SKIP_LINKS ) { buildSkipLinks(); }
 
   /**
    * Build skip links.
@@ -75,10 +102,13 @@ var SkipLinks = (function(){
     insertGlobalSkipLink();
 
     var skipLinkHTML = '';
-
-    for(var i = 0; i < NUM_SLIDES; i++) {
-      var slideText = SLIDES[i].getAttribute('data-title');
-      skipLinkHTML += '<li><a href="#/' + i + '">' + (i + 1) + '. ' + slideText + '</a></li>';
+    for (var i = 0; i < NUM_SLIDES; i++) {
+      var wrappedSlide = SLIDES[i].querySelector(SKIP_LINK_TARGET_SELECTOR);
+      var slideText = wrappedSlide.children[0].textContent;
+      if (slideText === '') {
+        slideText = wrappedSlide.textContent.substring(0, 40);
+      }
+      skipLinkHTML += '<li><a href="#/' + SLIDES[i].getAttribute('data-id') + '">' + (i + 1) + '. ' + slideText + '</a></li>';
     }
     skipLinkHTML += '</ul>';
 

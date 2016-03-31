@@ -462,6 +462,7 @@ body {
     background-color: transparent; }
 
 #oh-hai-images {
+  margin-top: 1em;
   text-align: center; }
   #oh-hai-images img, #oh-hai-images div {
     display: inline-block;

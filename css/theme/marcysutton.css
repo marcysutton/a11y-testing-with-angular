@@ -3,8 +3,316 @@
  *
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
+/**
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+section.has-dark-background, section.has-dark-background h1, section.has-dark-background .reveal .h1-style, .reveal section.has-dark-background .h1-style, section.has-dark-background h2, section.has-dark-background .reveal .h2-style, .reveal section.has-dark-background .h2-style, section.has-dark-background h3, section.has-dark-background .reveal .h3-style, .reveal section.has-dark-background .h3-style, section.has-dark-background h4, section.has-dark-background .reveal .h4-style, .reveal section.has-dark-background .h4-style, section.has-dark-background .reveal .subhead, .reveal section.has-dark-background .subhead, section.has-dark-background h5, section.has-dark-background h6 {
+  color: #fff; }
+
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
 body {
-  background: #000 url("../../img/post-alley.png") repeat center top; }
+  background: #fff;
+  background-color: #fff; }
+
+.reveal {
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 38px;
+  font-weight: normal;
+  color: #222; }
+
+::selection {
+  color: #fff;
+  background: #247cf3;
+  text-shadow: none; }
+
+.reveal .slides > section,
+.reveal .slides > section > section {
+  line-height: 1.3;
+  font-weight: inherit; }
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1, .reveal .h1-style,
+.reveal h2, .reveal .h2-style,
+.reveal h3, .reveal .h3-style,
+.reveal h4, .reveal .h4-style, .reveal .subhead,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 20px 0;
+  color: #222;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  text-shadow: none;
+  word-wrap: break-word; }
+
+.reveal h1, .reveal .h1-style {
+  font-size: 2.5em; }
+
+.reveal h2, .reveal .h2-style {
+  font-size: 1.6em; }
+
+.reveal h3, .reveal .h3-style {
+  font-size: 1.3em; }
+
+.reveal h4, .reveal .h4-style, .reveal .subhead {
+  font-size: 1em; }
+
+.reveal h1, .reveal .h1-style {
+  text-shadow: none; }
+
+/*********************************************
+ * OTHER
+ *********************************************/
+.reveal p {
+  margin: 20px 0;
+  line-height: 1.3; }
+
+/* Ensure certain elements are never larger than the slide itself */
+.reveal img,
+.reveal video,
+.reveal iframe {
+  max-width: 95%;
+  max-height: 95%; }
+
+.reveal strong,
+.reveal b {
+  font-weight: bold; }
+
+.reveal em {
+  font-style: italic; }
+
+.reveal ol,
+.reveal dl,
+.reveal ul {
+  display: inline-block;
+  text-align: left;
+  margin: 0 0 0 1em; }
+
+.reveal ol {
+  list-style-type: decimal; }
+
+.reveal ul {
+  list-style-type: disc; }
+
+.reveal ul ul {
+  list-style-type: square; }
+
+.reveal ul ul ul {
+  list-style-type: circle; }
+
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ol,
+.reveal ol ul {
+  display: block;
+  margin-left: 40px; }
+
+.reveal dt {
+  font-weight: bold; }
+
+.reveal dd {
+  margin-left: 40px; }
+
+.reveal q,
+.reveal blockquote {
+  quotes: none; }
+
+.reveal blockquote {
+  display: block;
+  position: relative;
+  width: 70%;
+  margin: 20px auto;
+  padding: 5px;
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }
+
+.reveal blockquote p:first-child,
+.reveal blockquote p:last-child {
+  display: inline-block; }
+
+.reveal q {
+  font-style: italic; }
+
+.reveal pre {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  text-align: left;
+  font-size: 0.55em;
+  font-family: monospace;
+  line-height: 1.2em;
+  word-wrap: break-word;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }
+
+.reveal code {
+  font-family: monospace; }
+
+.reveal pre code {
+  display: block;
+  padding: 5px;
+  overflow: auto;
+  max-height: 400px;
+  word-wrap: normal; }
+
+.reveal table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.reveal table th {
+  font-weight: bold; }
+
+.reveal table th,
+.reveal table td {
+  text-align: left;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  border-bottom: 1px solid; }
+
+.reveal table th[align="center"],
+.reveal table td[align="center"] {
+  text-align: center; }
+
+.reveal table th[align="right"],
+.reveal table td[align="right"] {
+  text-align: right; }
+
+.reveal table tr:last-child td {
+  border-bottom: none; }
+
+.reveal sup {
+  vertical-align: super; }
+
+.reveal sub {
+  vertical-align: sub; }
+
+.reveal small {
+  display: inline-block;
+  font-size: 0.6em;
+  line-height: 1.2em;
+  vertical-align: top; }
+
+.reveal small * {
+  vertical-align: top; }
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a {
+  color: #0D6EF1;
+  text-decoration: none;
+  -webkit-transition: color .15s ease;
+  -moz-transition: color .15s ease;
+  transition: color .15s ease; }
+
+.reveal a:hover {
+  color: #5599f6;
+  text-shadow: none;
+  border: none; }
+
+.reveal .roll span:after {
+  color: #fff;
+  background: #094da8; }
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  margin: 15px 0px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 4px solid #222;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
+
+.reveal section img.plain {
+  border: 0;
+  box-shadow: none; }
+
+.reveal a img {
+  -webkit-transition: all .15s linear;
+  -moz-transition: all .15s linear;
+  transition: all .15s linear; }
+
+.reveal a:hover img {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #0D6EF1;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #0D6EF1; }
+
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #0D6EF1; }
+
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #0D6EF1; }
+
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #0D6EF1; }
+
+.reveal .controls .navigate-left.enabled:hover {
+  border-right-color: #5599f6; }
+
+.reveal .controls .navigate-right.enabled:hover {
+  border-left-color: #5599f6; }
+
+.reveal .controls .navigate-up.enabled:hover {
+  border-bottom-color: #5599f6; }
+
+.reveal .controls .navigate-down.enabled:hover {
+  border-top-color: #5599f6; }
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2); }
+
+.reveal .progress span {
+  background: #0D6EF1;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
+
+.reveal h1, .reveal .h1-style, .reveal h2, .reveal .h2-style, .reveal h3, .reveal .h3-style, .reveal h4, .reveal .h4-style, .reveal .subhead, .reveal h5, .reveal h6 {
+  text-transform: none; }
+
+.reveal .subhead {
+  font-style: italic;
+  font-weight: bold; }
+
+.reveal .all-caps {
+  text-transform: uppercase; }
+
+.reveal .offscreen {
+  position: absolute;
+  left: -500000px; }
+
+.reveal .progress {
+  background-color: #BFC9D3;
+  height: 15px; }
+  .reveal .progress span {
+    background: #8dc63f;
+    box-shadow: 2px 1px 3px #666; }
+
+.reveal .controls {
+  bottom: 110px; }
 
 .reveal pre code {
   font-family: Menlo, Courier, monospace;
@@ -72,9 +380,86 @@ body {
   display: inline-block;
   width: 48%; }
 
+.reveal .layeredFragments {
+  margin: 0 auto;
+  min-height: 1000px;
+  position: relative;
+  width: 100%; }
+  .reveal .layeredFragments > img,
+  .reveal .layeredFragments > figure {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0;
+    width: 100%; }
+  .reveal .layeredFragments.wordcloud {
+    position: absolute;
+    top: 0; }
+    .reveal .layeredFragments.wordcloud .fragment {
+      position: absolute; }
+
+.reveal .responsive-video {
+  position: relative;
+  padding-bottom: 75%;
+  height: 0;
+  overflow: hidden;
+  width: 100%; }
+  .reveal .responsive-video iframe, .reveal .responsive-video object, .reveal .responsive-video embed, .reveal .responsive-video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height: 720px;
+    width: 100%;
+    height: 100%; }
+
 /*********************************************
  * Custom Slides
  *********************************************/
+.deque-title-slide.slide-background:after {
+  background-color: #BFC9D3;
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 100px;
+  max-height: 10%;
+  position: absolute;
+  width: 100%; }
+
+.deque-title-slide .left {
+  float: left; }
+
+.deque-title-slide img.deque {
+  max-width: 400px;
+  margin: -8% 0 0; }
+
+.deque-title-slide .right {
+  float: right;
+  padding-top: 8%;
+  text-align: left;
+  width: 65%; }
+
+@media screen and (max-width: 900px) {
+  .deque-title-slide .left img.deque {
+    max-width: 300px; }
+  .deque-title-slide .right h1, .deque-title-slide .right .reveal .h1-style, .reveal .deque-title-slide .right .h1-style {
+    font-size: 2em; } }
+
+@media screen and (max-width: 600px) {
+  .deque-title-slide .left {
+    float: none; }
+    .deque-title-slide .left img.deque {
+      margin: 0 auto; }
+  .deque-title-slide .right {
+    float: none;
+    margin: 0 auto;
+    width: 90%; }
+    .deque-title-slide .right h1, .deque-title-slide .right .reveal .h1-style, .reveal .deque-title-slide .right .h1-style {
+      font-size: 1.75em;
+      text-align: center; }
+    .deque-title-slide .right p {
+      font-size: 1em; } }
+
 #wallace-gromit {
   background: #181818 url(../../img/wallace-gromit.jpg) no-repeat top right;
   padding-bottom: 33px; }
@@ -82,6 +467,7 @@ body {
     background-color: transparent; }
 
 #oh-hai-images {
+  margin-top: 1em;
   text-align: center; }
   #oh-hai-images img, #oh-hai-images div {
     display: inline-block;
@@ -138,7 +524,7 @@ body {
   background-color: #c6ff00;
   color: #333; }
 
-.reveal #tiles-version1 figure.tile a h3, .reveal #tiles-version2 figure.tile h3 {
+.reveal #tiles-version1 figure.tile a h3, .reveal #tiles-version1 figure.tile a .h3-style, .reveal #tiles-version2 figure.tile h3, .reveal #tiles-version2 figure.tile .h3-style {
   display: inline-block;
   font-size: 0.75em;
   vertical-align: middle; }
@@ -155,7 +541,7 @@ a#menu_btn {
 
 .reveal #tiles-version1 figure.tile a {
   border: 2px solid #fff; }
-  .reveal #tiles-version1 figure.tile a:hover h3, .reveal #tiles-version1 figure.tile a:focus h3, .reveal #tiles-version1 figure.tile a.flipped h3 {
+  .reveal #tiles-version1 figure.tile a:hover h3, .reveal #tiles-version1 figure.tile a:hover .h3-style, .reveal #tiles-version1 figure.tile a:focus h3, .reveal #tiles-version1 figure.tile a:focus .h3-style, .reveal #tiles-version1 figure.tile a.flipped h3, .reveal #tiles-version1 figure.tile a.flipped .h3-style {
     color: #333; }
   .reveal #tiles-version1 figure.tile a div {
     -o-transition: top 0.5s ease-out;
@@ -184,7 +570,7 @@ a#menu_btn {
   border: 2px solid #fff; }
   .reveal #tiles-version2 figure.tile:focus, .reveal #tiles-version2 figure.tile:hover {
     cursor: pointer; }
-  .reveal #tiles-version2 figure.tile:hover h3, .reveal #tiles-version2 figure.tile:focus h3, .reveal #tiles-version2 figure.tile.flipped h3 {
+  .reveal #tiles-version2 figure.tile:hover h3, .reveal #tiles-version2 figure.tile:hover .h3-style, .reveal #tiles-version2 figure.tile:focus h3, .reveal #tiles-version2 figure.tile:focus .h3-style, .reveal #tiles-version2 figure.tile.flipped h3, .reveal #tiles-version2 figure.tile.flipped .h3-style {
     color: #333; }
   .reveal #tiles-version2 figure.tile .hidden {
     display: none !important;
@@ -219,139 +605,7 @@ a#menu_btn {
       top: 200px;
       width: 100%;
       z-index: 1; }
-  .reveal #tiles-version2 figure.tile h3 {
-    margin-top: 10px; }
-  .reveal #tiles-version2 figure.tile a {
-    color: #cf6600;
-    display: block;
-    font-size: 0.6em;
-    font-weight: bold;
-    line-height: 1em;
-    margin-top: 10px; }
-    .reveal #tiles-version2 figure.tile a span {
-      display: block; }
-  .reveal #tiles-version2 figure.tile.flipped div.tile-inner {
-    top: -200px; }
-
-/**
-* Code examples for AccesibleJS
-*
-* Copyright (C) 2013 Marcy Sutton, http://marcysutton.com
-*/
-/**
-* Extends for AccesibleJS code examples
-*
-* Copyright (C) 2013 Marcy Sutton, http://marcysutton.com
-*/
-.reveal #tiles-version1 figure.tile, .reveal #tiles-version2 figure.tile {
-  display: inline-block;
-  height: 200px;
-  margin: 0 10px 10px;
-  overflow: hidden;
-  position: relative;
-  width: 200px; }
-
-.reveal #tiles-version1 figure.tile a {
-  color: #fff;
-  display: block;
-  font-weight: bold;
-  height: auto;
-  min-height: 98%;
-  min-width: 98%;
-  overflow: hidden;
-  position: relative;
-  width: auto; }
-
-.reveal #tiles-version1 figure.tile a:hover, .reveal #tiles-version1 figure.tile a:focus, .reveal #tiles-version2 figure.tile:focus, .reveal #tiles-version2 figure.tile:hover {
-  background-color: #fff;
-  color: #333; }
-
-.reveal #tiles-version1 figure.tile a.flipped, .reveal #tiles-version2 figure.tile.flipped {
-  background-color: #c6ff00;
-  color: #333; }
-
-.reveal #tiles-version1 figure.tile a h3, .reveal #tiles-version2 figure.tile h3 {
-  display: inline-block;
-  font-size: 0.75em;
-  vertical-align: middle; }
-
-a#menu_btn {
-  display: inline-block;
-  font-size: 3em;
-  margin: 0 0 2%;
-  padding: 2%; }
-  a#menu_btn:before {
-    content: 'i';
-    display: block;
-    font-family: 'entyporegular'; }
-
-.reveal #tiles-version1 figure.tile a {
-  border: 2px solid #fff; }
-  .reveal #tiles-version1 figure.tile a:hover h3, .reveal #tiles-version1 figure.tile a:focus h3, .reveal #tiles-version1 figure.tile a.flipped h3 {
-    color: #333; }
-  .reveal #tiles-version1 figure.tile a div {
-    -o-transition: top 0.5s ease-out;
-    -ms-transition: top 0.5s ease-out;
-    -moz-transition: top 0.5s ease-out;
-    -webkit-transition: top 0.5s ease-out;
-    transition: top 0.5s ease-out;
-    border: 1px solid #000;
-    display: block;
-    height: 86%;
-    left: 0;
-    margin: 10px;
-    position: absolute;
-    top: 0;
-    width: 86%; }
-  .reveal #tiles-version1 figure.tile a.flipped div.tile-back,
-  .reveal #tiles-version1 figure.tile a div.tile-front {
-    top: 0; }
-  .reveal #tiles-version1 figure.tile a div.tile-back {
-    top: 100%;
-    z-index: 1; }
-  .reveal #tiles-version1 figure.tile a.flipped div.tile-front {
-    top: -100%; }
-
-.reveal #tiles-version2 figure.tile {
-  border: 2px solid #fff; }
-  .reveal #tiles-version2 figure.tile:focus, .reveal #tiles-version2 figure.tile:hover {
-    cursor: pointer; }
-  .reveal #tiles-version2 figure.tile:hover h3, .reveal #tiles-version2 figure.tile:focus h3, .reveal #tiles-version2 figure.tile.flipped h3 {
-    color: #333; }
-  .reveal #tiles-version2 figure.tile .hidden {
-    display: none !important;
-    visibility: hidden; }
-  .reveal #tiles-version2 figure.tile div.mask {
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    width: 100%; }
-    .reveal #tiles-version2 figure.tile div.mask .tile-inner {
-      -o-transition: top 0.5s ease-out;
-      -ms-transition: top 0.5s ease-out;
-      -moz-transition: top 0.5s ease-out;
-      -webkit-transition: top 0.5s ease-out;
-      transition: top 0.5s ease-out;
-      height: 200%;
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      width: 100%; }
-    .reveal #tiles-version2 figure.tile div.mask .tile-front {
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%; }
-    .reveal #tiles-version2 figure.tile div.mask .tile-back {
-      display: block;
-      height: 100%;
-      left: 0;
-      position: relative;
-      top: 200px;
-      width: 100%;
-      z-index: 1; }
-  .reveal #tiles-version2 figure.tile h3 {
+  .reveal #tiles-version2 figure.tile h3, .reveal #tiles-version2 figure.tile .h3-style {
     margin-top: 10px; }
   .reveal #tiles-version2 figure.tile a {
     color: #cf6600;

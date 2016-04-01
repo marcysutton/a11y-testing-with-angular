@@ -439,11 +439,13 @@ body {
   text-align: left;
   width: 65%; }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1024px) {
+  .deque-title-slide.slide-background:after {
+    display: none; }
   .deque-title-slide .left img.deque {
     max-width: 300px; }
   .deque-title-slide .right h1, .deque-title-slide .right .reveal .h1-style, .reveal .deque-title-slide .right .h1-style {
-    font-size: 2em; } }
+    font-size: 1.5em; } }
 
 @media screen and (max-width: 600px) {
   .deque-title-slide .left {
@@ -455,10 +457,10 @@ body {
     margin: 0 auto;
     width: 90%; }
     .deque-title-slide .right h1, .deque-title-slide .right .reveal .h1-style, .reveal .deque-title-slide .right .h1-style {
-      font-size: 1.75em;
+      font-size: 1.5em;
       text-align: center; }
     .deque-title-slide .right p {
-      font-size: 1em; } }
+      font-size: 0.75em; } }
 
 #wallace-gromit {
   background: #181818 url(../../img/wallace-gromit.jpg) no-repeat top right;

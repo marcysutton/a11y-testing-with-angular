@@ -5,7 +5,7 @@ $dequeLogoColor: #00274d;
 $dequeBgColor: #BFC9D3;
 $accentColor: #8dc63f;
 
-$tablet: 'screen and (max-width: 900px)';
+$tablet: 'screen and (max-width: 1024px)';
 $mobile: 'screen and (max-width: 600px)';
 
 .reveal {
@@ -201,6 +201,9 @@ $mobile: 'screen and (max-width: 600px)';
     width: 65%;
   }
   @media #{$tablet} {
+    &.slide-background:after {
+      display: none;
+    }
     .left {
       img.deque {
         max-width: 300px;
@@ -208,7 +211,7 @@ $mobile: 'screen and (max-width: 600px)';
     }
     .right {
       h1 {
-        font-size: 2em;
+        font-size: 1.5em;
       }
     }
   }
@@ -224,11 +227,11 @@ $mobile: 'screen and (max-width: 600px)';
       margin: 0 auto;
       width: 90%;
       h1 {
-        font-size: 1.75em;
+        font-size: 1.5em;
         text-align:  center;
       }
       p {
-        font-size: 1em;
+        font-size: 0.75em;
       }
     }
   }

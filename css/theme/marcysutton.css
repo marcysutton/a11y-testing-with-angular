@@ -297,6 +297,12 @@ body {
   font-style: italic;
   font-weight: bold; }
 
+.reveal h2 .subhead, .reveal .h2-style .subhead,
+.reveal h3 .subhead, .reveal .h3-style .subhead {
+  display: block;
+  font-size: 0.5em;
+  line-height: 1; }
+
 .reveal .all-caps {
   text-transform: uppercase; }
 
@@ -317,6 +323,10 @@ body {
 .reveal pre code {
   font-family: Menlo, Courier, monospace;
   max-height: 520px; }
+
+.reveal figcaption {
+  font-style: italic;
+  font-weight: bold; }
 
 .reveal figure.code {
   box-sizing: border-box;

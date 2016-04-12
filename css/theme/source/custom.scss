@@ -29,6 +29,12 @@ $mobile: 'screen and (max-width: 600px)';
     font-style: italic;
     font-weight: bold;
   }
+  h2 .subhead,
+  h3 .subhead {
+    display: block;
+    font-size: 0.5em;
+    line-height: 1;
+  }
   .all-caps {
     text-transform: uppercase;
   }
@@ -52,6 +58,10 @@ $mobile: 'screen and (max-width: 600px)';
   pre code {
     font-family: Menlo, Courier, monospace;
     max-height: 520px;
+  }
+  figcaption {
+    font-style: italic;
+    font-weight: bold;
   }
   figure.code {
     box-sizing: border-box;

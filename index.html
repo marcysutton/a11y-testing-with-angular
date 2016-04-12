@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Accessibility and Performance - Marcy Sutton</title>
+		<title>Accessibility Testing in Angular 2 - Marcy Sutton</title>
 
-		<meta name="description" content="A presentation on accessibility and performance for Fronteers and Generate NYC">
+		<meta name="description" content="A presentation on accessibility testing in Angular 2">
 		<meta name="author" content="Marcy Sutton">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -37,16 +37,14 @@
 	</head>
 
 	<body>
-
 		<div class="reveal">
 			<div class="slides">
-				<!-- <div class="slide-padding"> -->
 				<section data-background-color="#fff" class="deque-title-slide">
 					<div class="left">
 						<img src="img/deque-logo.png" alt="Deque" class="plain deque">
 					</div>
 					<div class="right">
-						<h1>Accessibility and Performance</h1>
+						<h1>Accessibility Testing<br>with Angular 2</h1>
 						<p>
 							By <a href="http://marcysutton.com">Marcy Sutton</a> / <a href="http://twitter.com/marcysutton">@MarcySutton</a><br>
 							Senior Front-End Engineer, Deque Systems
@@ -55,299 +53,304 @@
 				</section>
 
 				<section>
-					<h2>Who is Marcy Sutton?</h2>
-					<div id="oh-hai-images">
-						<div>
-							<img data-src="img/axe-core.png" alt="axe-core" class="axe plain" style="margin-bottom: 0.75em;">
-							<img data-src="img/web-a11y-slack.jpg" alt="Web Accessibility Slack" class="slack plain" style="max-width: 250px;">
-						</div>
-						<img data-src="img/angularjs-logo.png" alt="AngularJS" class="angular plain" style="margin: 0 1em 0 0.5em;">
-						<img data-src="img/gdi_logo_badge.png" alt="Girl Develop It" class="gdi plain">
-					</div>
+					<h2>Break it down</h2>
+					<ul>
+						<li>Who is impacted?</li>
+						<li>What can we do?</li>
+						<li>How can we do it?</li>
+					</ul>
 				</section>
 
 				<section>
-					<h2 class="offscreen">CNN VoiceOver demo</h2>
-					<div class="responsive-video">
-						<iframe title="Accessibility and Performance: CNN" width="1080" height="720" src="https://www.youtube.com/embed/EnmWUj4XKGg?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-						<!--<video data-src="video/CNN-a11y-perf.mp4" controls></video>-->
-					</div>
+					<h2 class="h1-style">
+						15% of the population
+						<em class="subhead">has some kind of disability</em>
+					</h2>
+					<p><small><a href="http://www.who.int/mediacentre/factsheets/fs352/en/">Source: World Health Organization</a></small></p>
+				</section>
+
+				<section>
+					<h3 class="h2-style">Some people can&rsquo;t:</h3>
+					<ul>
+						<li class="fragment">Use a mouse</li>
+						<li class="fragment">View a screen</li>
+						<li class="fragment">See low contrast text</li>
+						<li class="fragment">Hear dialogue or music</li>
+						<li class="fragment">Understand complex language</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3 class="h2-style">Some people need:</h3>
+					<ul>
+						<li class="fragment">Keyboard support</li>
+						<li class="fragment">Screen reader support</li>
+						<li class="fragment">High contrast text</li>
+						<li class="fragment">Captions and transcripts</li>
+						<li class="fragment">Plain language</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3 class="h1-style">Guess what: you can help!</h3>
+					<p class="subhead"><em>&hellip;by making the Internet more accessible.</em></p>
+				</section>
+
+				<section>
+					<h2 class="h1-style">
+						<em class="subhead">Build accessibility into your workflow with</em>
+						Automated Testing</h2>
 					<aside class="notes">
-					Black out screen and play audio only?
+					DOM vs. accessibility/ ax tree
+					keyboard event stubbing
+					tests as documentation for accessibility features
 					</aside>
 				</section>
 
 				<section>
-					<h2 style="margin-top: 1em;">Performance?</h2>
+					<p class="offscreen">1 of 2</p>
+					<h2>Component-Specific Unit Tests</h2>
+					<div class="fragment">
+						<p><em class="subhead">Good for:</em></p>
+						<ul>
+							<li>Text alternatives / Labeling</li>
+							<li>Keyboard Operability</li>
+							<li>ARIA attribute watching</li>
+						</ul>
+					</div>
+					<aside class="notes">
+					Escape key, tabbing, hitting Enter/Space, Arrow keys
+					offscreen/attribute text computation (stuff you don't see)
+					ARIA default values for custom elements
+					</aside>
+				</section>
+
+				<section>
 					<figure>
-						<img data-src="img/golden-waterfall.png" alt="Browser developer-tools waterfall indicating back end versus front end" class="plain">
-						<figcaption>
-							<small><a href="https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/">Steve Souders: The Performance Golden Rule</a></small>
-						</figcaption>
+						<img data-src="img/md-checkbox2-voiceover.png" alt="Material 2 checkbox operated with Voiceover" style="max-width: 1100px">
+						<figcaption><a href="https://github.com/angular/material2/tree/master/src/components/checkbox">Material 2 checkbox using Voiceover</a></figcaption>
 					</figure>
+				</section>
+
+				<section>
+					<h3>Unit testing for text alternatives</h3>
+					<h4>aria-labelledby</h4>
+					<pre><code class="javascript">
+ describe('MdCheckbox', function() {
+  var builder: TestComponentBuilder;
+
+  beforeEach(inject([TestComponentBuilder], function(tcb: TestComponentBuilder) {
+    builder = tcb;
+  }));
+
+  it('sets the "aria-labelledby" attribute to the id of the label', function(done: () => void) {
+      builder.createAsync(CheckboxController).then(function(fixture) {
+        fixture.detectChanges();
+        let el = fixture.debugElement.query(By.css('.md-checkbox'));
+        let label = el.nativeElement.querySelector('label');
+
+        expect(el.nativeElement.getAttribute('aria-labelledby')).toEqual(label.id);
+      }).then(done).catch(done);
+    });
+ });
+					</code></pre>
+				</section>
+
+				<!-- <section>
+					<h3>Unit testing for text alternatives</h3>
+					<h4>aria-label, label/for</h4>
+				</section> -->
+
+				<section>
+					<figure>
+						<img data-src="img/material2-keyevent.gif" alt="Material 2 checkbox operated with the keyboard">
+						<figcaption><a href="https://github.com/angular/material2/tree/master/src/components/checkbox">Material 2 checkbox using the keyboard</a></figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<h3>Unit tests: keyboard support</h3>
+					<pre><code class="javascript">
+  describe('keyboard support', function() {
+      var fixture: ComponentFixture;
+      var controller: MenuController;
+      var el: DebugElement;
+
+      beforeEach(function(done: () => void) {
+        builder.createAsync(MenuController).then(function(f) {
+          fixture = f;
+          controller = fixture.componentInstance;
+          fixture.detectChanges();
+          el = fixture.debugElement.query(By.css('.menuitem'));
+        }).then(done).catch(done);
+      });
+
+      it('should toggle with the spacebar', function(done: () => void) {
+        keyEvent('keydown', el, ' ', fixture);
+        expect(el.nativeElement.className).toContain('menuitem-active');
+
+        keyEvent('keydown', el, ' ', fixture);
+        expect(el.nativeElement.className).not.toContain('menuitem-active');
+      });
+
+      it('should close with the escape key', function(done: () => void) {
+        keyEvent('keydown', el, '27', fixture);
+        expect(el.nativeElement.className).not.toContain('menuitem-active');
+      });
+  });
+  function keyEvent(name: string, el: DebugElement, key: string, fixture: ComponentFixture): Event {
+    var kbdEvent: Event;
+    if (BROWSER_SUPPORTS_EVENT_CONSTRUCTORS) {
+      kbdEvent = new KeyboardEvent(name);
+    } else {
+    kbdEvent = document.createEvent('Event');
+    kbdEvent.initEvent(name, true, true);
+  
+    // Hack DOM Level 3 Events "key" prop into keyboard event.
+    Object.defineProperty(kbdEvent, 'key', {
+      value: key,
+      enumerable: false,
+      writable: false,
+      configurable: true
+    });
+    spyOn(kbdEvent, 'preventDefault').and.callThrough();
+    spyOn(kbdEvent, 'stopPropagation').and.callThrough();
+    el.nativeElement.dispatchEvent(kbdEvent);
+    fixture.detectChanges();
+    return kbdEvent;
+  }
+					</code></pre>
+				</section>
+
+				<section>
+					<figure>
+						<img data-src="img/md-checkbox2-chromecanary.png" alt="Material 2 checkbox in Chrome Canary Accessibility Inspector">
+						<figcaption>Material 2 checkbox a11y in Chrome Canary</figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<h3>Unit tests: ARIA attribute watching</h3>
+					<pre><code class="javascript">	
+    it('toggles "aria-checked" on the host element', function() {
+      builder.createAsync(CheckboxController).then(function(fixture) {
+        let el = fixture.debugElement.query(By.css('.md-checkbox'));
+
+        expect(el.nativeElement.getAttribute('aria-checked')).toEqual('false');
+
+        controller = fixture.componentInstance;
+        changePromise = waitForChange();
+        controller.isChecked = true;
+
+        fixture.detectChanges();
+
+        expect(el.nativeElement.getAttribute('aria-checked')).toEqual('true');
+      });
+    });
+					</code></pre>
+				</section>
+
+				<section>
+					<p class="offscreen">2 of 2</p>
+					<h2>Testing with an accessibility API</h2>
+					<div class="fragment">
+						<p><em class="subhead">Save yourself from testing:</em></p>
+						<ul>
+							<li>Label/name computation</li>
+							<li>Incorrect ARIA usage</li>
+							<li>Color contrast</li>
+							<li>Data table markup</li>
+							<li>Viewport/zooming probz</li>
+						</ul>
+					</div>
 					<aside class="notes">
-					90% of resource loading impacts the front-end, and coincidentally that has a lot of impact on accessibility too.
+					Escape key, tabbing, hitting Enter/Space, Arrow keys
+					offscreen/attribute text computation (stuff you don't see)
+					ARIA default values for custom elements
 					</aside>
 				</section>
 
 				<section>
-					<h2>Accessibility</h2>
-					<h3><a href="http://www.w3.org/WAI/intro/accessibility.php" target="_blank" title="Link opens in a new window">W3.org</a></h3>
-		        	<blockquote>The Web is fundamentally designed to work for all people, whatever their hardware, software, language, culture, location, or physical or mental ability.</blockquote>
-		        	<aside class="notes">
-		        	SET UP QUOTE: "You can't optimize what you can't measure."
-		        	</aside>
+					<h3>Your options</h3>
+					<ul>
+						<li>QUAIL</li>
+						<li>WAVE</li>
+						<li>aXe</li>
+						<li>Tenon</li>
+						<li>Chrome A11y Developer Tools</li>
+					</ul>
 				</section>
-
-		        <!--<section>
-		          <h2>Who are we talking about?</h2>
-		          <ul>
-		            <li>Blind, Low Vision</li>
-		            <li>Limited Mobility</li>
-		            <li>Deaf, Hard of Hearing</li>
-		            <li>Cognitive/Learning</li>
-		            <li>Color Blind</li>
-		            <li class="fragment" style="margin-top: 8%;">AND EVERYONE ELSE</li>
-		          </ul>
-		          <aside class="notes">
-		            <p>Note about aging population</p>
-		          </aside>
-		        </section>-->
-
-		        <section>
-					<h2><em><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp?hl=en">&ldquo;You can&rsquo;t optimize what you can&rsquo;t measure.&rdquo;</a></em></h2>
-		        </section>
 
 				<section>
-					<blockquote>
-						<p>&ldquo;[L]etting a website know you’re using a screen reader means running around the web waving a red flag that shouts “here, I’m visually impaired!”&hellip; It would take away the one place where blind people can be relatively undetected without our white cane or guide dog&hellip;and therefore giving others a chance to treat us like true equals.&rdquo;</p>
-						<cite><a href="https://www.marcozehe.de/2014/02/27/why-screen-reader-detection-on-the-web-is-a-bad-thing/">Marco Zehe: Why Screen Reader Detection is a Bad Thing</a></cite>
-					</blockquote>
+					<h3 class="h2-style">aXe-core API</h3>
+					<p><a href="https://github.com/dequelabs/axe-core">https://github.com/dequelabs/axe-core</a></p>
+					<ul>
+						<li>Runs locally</li>
+						<li>Open source</li>
+						<li>Free <sup aria-describedby="footnote1" style="font-size: 0.75em;">&dagger;</sup></li>
+						<li>Good for integration tests</li>
+						<li>Also unit tests</li>
+					</ul>
+					<p id="footnote1" style="font-size: 0.75em;"><sup>&dagger;</sup>There&rsquo;s also a supported/enterprise option</p>
+				</section>
+<!-- 
+				<section>
+					<h3>Testing a page with aXe-core</h3>
+					<h4>TODO: test whole page</h4>
+					<pre><code class="javascript">
+  require('axe-core/axe.js');
+  declare var axe: any;
+  
+  ...
+
+  it('should have no accessibility issues', injectAsync([ TestComponentBuilder ], (tcb: TestComponentBuilder) => {
+    return tcb.createAsync(Home).then((componentFixture: ComponentFixture) => {
+      // get ahold of the document. do we still need componentFixture or tcb?
+      const document = componentFixture.nativeElement;
+
+      axe.a11yCheck(document, null, (result) => {
+        console.log(result);
+        expect(result.violations.length).toBe(0);
+      });
+    });
+  }));
+					</code></pre>
+				</section>
+ -->
+				<section>
+					<h3>Testing a component with aXe-core</h3>
+					<pre><code class="javascript">
+  require('axe-core/axe.js');
+  declare var axe: any;
+
+  ...
+
+  it('should have a form label', injectAsync([ TestComponentBuilder ], (tcb: TestComponentBuilder) => {
+    return tcb.createAsync(Home).then((componentFixture: ComponentFixture) => {
+      const element = componentFixture.nativeElement;
+
+      axe.a11yCheck(element, null, (result) => {
+        console.log(result);
+        expect(result.violations.length).toBe(0);
+      });
+    });
+  }));
+					</code></pre>
 				</section>
 
-		        <section>
-			        <h3>Navigation Timing API</h3>
-			        <div class="layeredFragments">
-			        	<figure>
-					        <a href="http://khan4019.github.io/HighPerformanceJSandCSS/#/5/3">
-					        	<img data-src="img/lifeOfARequestParts-khan4019.png" alt="Life of a request: Server vs. client" style="max-height: 620px;" class="plain">
-					        </a>
-					    </figure>
-					    <figure class="fragment">
-					    	<a href="http://khan4019.github.io/HighPerformanceJSandCSS/#/5/3">
-					        	<img data-src="img/lifeOfARequestParts-khan4019-highlighted.png" alt="Life of a request: DOM Interactive" style="max-height: 620px;" class="plain">
-					        </a>
-					    </figure>
-				    </div>
-		        </section>
+				<section>
+					<h2>Demo</h2>
+				</section>
 
-		        <section>
-		        	<h2>A11y + Performance:</h2>
-		        	<h3><em>What do we have?</em></h3>
-		        	<ul>
-		        		<li class="fragment">Known user impact</li>
-		        		<li class="fragment">Optimizations</li>
-		        		<li class="fragment">Universal apps</li>
-		        	</ul>
-		        </section>
-
-		        <section>
-		        	<h2 class="h3-style">User Impact:</h2>
-		        	<h3 class="h2-style">Interacting with the keyboard</h3>
-		        	<ul>
-			        	<li class="fragment">Are you waiting for JS to load?</li>
-			        	<li class="fragment">Is the UI thread blocked?</li>
-			        	<li class="fragment">Does the UI depend on JS for everything?</li>
-		        	</ul>
-		        	<aside class="notes">
-		        	Do as much enabling of functionality without JS as possible. Use native HTML and let it load on the server-side.
-		        	How long does it take to become interactive?
-
-		        	What is in the critical path code: is it just visual style stuff?
-		        	</aside>
-		        </section>
-
-		        <section>
-		        	<h3>Not-Progresive Enhancement</h3>
-		        	<figure>
-			        	<a href="https://eev.ee/blog/2016/03/06/maybe-we-could-tone-down-the-javascript/"><img data-src="img/eevee-broken-twitter-areas.png" alt="The parts of Twitter that do not work without JavaScript highlighted in red"></a>
-			        	<figcaption>
-			        		<small><a href="https://eev.ee/blog/2016/03/06/maybe-we-could-tone-down-the-javascript/">Eevee: Maybe we could tone down the JavaScript</a></small> 
-			        	</figcaption>
-			        </figure>
-		        </section>
-
-		        <section>
-		        	<p class="h3-style">User Impact:</p>
-		        	<h3 class="h2-style">Assistive Technology</h3>
-		        	<ul>
-			        	<li class="fragment">Are you waiting for JS to build the DOM?</li>
-			        	<li class="fragment">What is the loading experience like?</li>
-			        	<li class="fragment">Is the Accessibility Tree slow to update?</li>
-		        	</ul>
-		        	<aside class="notes">
-		        	Loading of the accessibility tree, how it is impacted by slow loading. Explanation of the CNN example
-		        	</aside>
-		        </section>
-
-		        <section>
-		        	<h3>What is the Accessibility Tree?</h3>
-		        	<h4>Objects impacted by HTML, CSS and JavaScript</h4>
-		        	<figure>
-		        		<img data-src="img/chrome-accessibility-tree.png" alt="Chrome Accessibility Tree of HTML5 video element" class="plain">
-			        	<figcaption>chrome://accessibility</figcaption>
-			        </figure>
-		        	<aside class="notes">
-"We expose a property, AXLoadingProgress, which tracks the loading progress. This is tracked by a class in Blink which is used in a variety of places, not just for accessibility. My guess is that VoiceOver queries this property and doesn't show the rotor until that reaches 1.0. That state seems to happen when the page is fully loaded including all resources, although it treats the first page layout as the halfway point (but we probably shouldn't rely on that behaviour)." - Alice Boxhall
-
-		        	</aside>
-		        </section>
-
-		        <section>
-		        	<figure>
-			        	<img style="max-width: 700px;" data-src="img/geckoflow.png" class="plain" alt="Gecko rendering flow">
-			        	<figcaption>Mozilla's Gecko rendering engine main flow</figcaption>
-			        </figure>
-			        <p><a href="http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">HTML5 Rocks: How Browsers Work</a></p>
-		        </section>
-
-		        <section data-transition="none">
-		        	<figure>
-			        	<img style="max-width: 700px;" data-src="img/geckoflow-ax-tree.png" class="plain" alt="Gecko rendering flow with Accessibility Tree">
-			        	<figcaption>Mozilla's Gecko rendering engine main flow (updated)</figcaption>
-			        </figure>
-			        <p><a href="http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">HTML5 Rocks: How Browsers Work</a></p>
-		        </section>
-
-		        <section>
-			        <h3>Things that impact the Accessibility Tree:</h3>
-			        <h4>Changes in JavaScript that impact layout/reflow</h4>
-			        <div>
-			        <ul>
-		        		<li class="fragment"><code>display: none;</code></li>
-		        		<li class="fragment"><code>elem.computedRole</code><br>
-		        		<code>elem.computedName</code></li>
-		        		<li class="fragment"><code>elem.scrollTop</code>, other scrolly things</li>
-		        		<li class="fragment"><code>window.getComputedStyle()</code></li>
-		        	</ul>
-		        	<div class="fragment">
-			        	<p style="line-height: 1.5">...and much more. Use sparingly while loading.<br>
-			        		<code><small><a href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a">https://gist.github.com/paulirish/5d52fb081b3570c81e3a</a></small></code>
-			        	</p>
-		        	</div>
-		        	<aside class="notes">
-		        		Anything that causes a reflow will most likely 
-		        		create or recreate an accessible object for it. (under discussion: flexbox)
-		        		ARIA state changes don’t recreate objects, but they do send events.
-		        	</aside>
-		        </section>
-
-		        <section>
-			        <h2 class="h1-style">Optimizations</h2>
-			    </section>
-
-			    <section>
-			    	<p class="subhead">Optimization:</p>
-			    	<h3 class="h2-style">Set default values in HTML</h3>
-			    	<pre style="max-width: 860px; margin: 0 auto;"><code class="html">
-  &lt;span role="checkbox" aria-checked="false" tabindex="0">&lt;/span>
-			    	</code></pre>
-			    	<p>Update them with JS just fine.</p>
-			    </section>
-
-			    <section>
-			    	<p class="subhead">Optimization:</p>
-			    	<h3 class="h2-style">Include keyboard support<br>in the <a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/?hl=en">critical rendering path</a></h3>
-			    	<img data-src="img/critical_rendering_path.png" alt="Critical Rendering Path diagram" style="max-width: 600px;">
-			    	<p>Prioritize accessible interactions.</p>
-		        </section>
-
-		        <section data-background-image="img/tumblr-gif.jpg">
-			        <h3 class="offscreen">Full-screen GIF and no login modal</h3>
-		        </section>
-
-		        <section>
-		        	<p class="subhead">Optimization:</p>
-		        	<h3 class="h2-style">Use as many browser defaults as possible</h3>
-		        	<ul>
-		        		<li class="fragment">Buttons &amp; links</li>
-		        		<li class="fragment">HTML5 inputs</li>
-			        	<li class="fragment">Focus styles</li>
-		        	</ul>
-		        	<p class="fragment">Everything you customize has to be sent over the wire.</p>
-		        </section>
-
-		        <section>
-			        <h2 class="h1-style">Universal Rendering</h2>
-			        <h3 class="h2-style">a.k.a. "isomorphic JavaScript"</h3>
-			        <p>Load the same app from both the server and client</p>
-			    </section>
-
-			    <section>
-			    	<a href="https://strongloop.com/strongblog/node-js-react-isomorphic-javascript-why-it-matters/"><img data-src="img/isomorphic-flow.jpg" alt="Isomorphic JavaScript steps" aria-describedby="isomorphic-desc" style="display: inline-block; max-width: 400px;"></a>
-			    	<ol style="display: none;" id="isomorphic-desc">
-			    		<li>Render HTML from JavaScript app on server</li>
-			    		<li>Browser loads with full HTML</li>
-			    		<li>JavaScript loads then bootstraps the application</li>
-			    	</ol>
-				    <div class="layeredFragments wordcloud">
-				    	<h3 class="fragment" style="right: 200px; top:-100px; transform: rotate(5deg);">Frameworks</h3>    	
-				    	<h3 class="fragment" style="left: 200px; top:0px; transform:rotate(-10deg);">Hotness</h3>
-				    	<h3 class="fragment" style="right: 200px; top:400px; transform: rotate(-15deg);">Buzzwords</h3>
-			    	</div>
-			    </section>
-
-			    <!-- <section>
-		        	Keep this slide? Where does it go?
-		        	<img data-src="img/venn-accessibility-usability-PE.png" alt="Venn diagram: Accessibility, Usability, Progressive Enhancement" class="plain" style="max-height: 600px;">
-		        </section> -->
-
-		        <section>
-			        <h2 style="margin:50px 0 0;">Don&rsquo;t: Hide Content on Load</h2>
-			        <div class="layeredFragments">
-				        <img data-src="img/react-universal-loading.jpg" alt="React blog loading with hidden body" class="plain">
-				        <img data-src="img/react-universal-loaded.jpg" alt="React blog loaded" class="plain fragment">
-				    </div>
-				    <aside class="notes">
-				    Display: none impacts accessibility objects
-				    </aside>
-		        </section>
-
-		        <section>
-		        	<img data-src="img/ios-safari-react-hidden.jpg" alt="iOS Safari with no Accessibility Information beyond page load" class="plain" style="width: 48%;">
-		        	<img data-src="img/ios-safari-react-blog.jpg" alt="React Universal Blog demo in iOS Safari" class="plain" style="width: 48%;">
-		        </section>
-
-		        <section>
-		        	<h2 style="margin:50px 0 0;">Do: Enable core functions without JS</h2>
-		        	<div class="layeredFragments">
-			        	<img data-src="img/airbnb-homepage-nojs.jpg" alt="Airbnb homepage without JavaScript" class="plain">
-		        		<img data-src="img/airbnb-search-nojs.jpg" alt="Airbnb Seattle search page without JavaScript" class="fragment plain">
-		        	</div>
-		        </section>
-
-		        <section>
-			        <h2>Do: Utilize event playback</h2>
-			        <img data-src="img/preboot.png" alt="Preboot by Jeff Whelpley" style="max-width: 600px;">
-			        <p><code><a href="http://whlp.ly/universal-preboot">http://whlp.ly/universal-preboot</a></code></p>
-			        <aside class="notes">
-				        Make sure events include the keyboard! 
-				        Bad Example: link tracking only (for analytics)
-				        How does event playback impact AT? AX tree read/write
-			        </aside>
-		        </section>
-
-		        <section>
-			        <h2>Conclusion</h2>
-			        <ul>
-				        <li>Think beyond visual performance</li>
-				        <li>Optimize for accessible actions</li>
-				        <li>Use technology to help more users</li>
-			        </ul>
-			        <aside class="notes">
-				        <p>By optimizing for slow and no-js experiences, we can make websites more accessible to all people. We can strike a balance between modern technology and wide usability by enabling universal/isomorphic rendering for (lately) client-side only apps.</p>
-			       	</aside>
-		        </section>
+				<section>
+					<h2>Recap</h2>
+					<ul>
+						<li>You need accessibility tests.</li>
+						<li>Unit test for keyboard support, usability basics</li>
+						<li>Use an API for extra a11y muscle</li>
+						<li>Prevent broken stuff from going out the door!</li>
+					</ul>
+				</section>
 
 				<section data-background-color="#ffffff">
 					<h2>Thanks!</h2>
@@ -355,7 +358,6 @@
 					<h3 class="subhead"><a href="http://github.com/marcysutton">github.com/marcysutton</a></h3>
 					<img data-src="img/deque_logo_600p.jpg" alt="" style="width: 320px;">
 				</section>
-<!-- 				</div> -->
 			</div>
 		</div>
 

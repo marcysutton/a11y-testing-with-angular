@@ -1,15 +1,13 @@
-# Accessibility and Performance
+# Automated Accessibility Testing with Angular 2
 
-A presentation on performance and accessibility, including browser rendering quirks and best practices for universal JavaScript apps.
+A presentation on accessibility testing using Angular 2 and axe-core
 
 By Marcy Sutton, Senior Front-end Engineer at Deque Systems
 
 ##Presenting at:
-- Fronteers Spring Thing
-- Seattle JS
-- Generate NYC
+- AngularJS Mountain View
 
-Slide URL: [http://marcysutton.github.io/a11y-perf](http://marcysutton.github.io/a11y-perf)
+Slide URL: [http://marcysutton.github.io/a11y-testing-angular2](http://marcysutton.github.io/a11y-testing-angular2)
 
 ## Installation
 
@@ -23,7 +21,7 @@ Some reveal.js features, like external Markdown and speaker notes, require that 
 
 4. Clone the repository
    ```sh
-   $ git clone https://github.com/marcysutton/a11y-perf.git
+   $ git clone https://github.com/marcysutton/a11y-testing-angular2.git
    ```
 
 5. Navigate to the project folder

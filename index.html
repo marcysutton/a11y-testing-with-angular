@@ -52,8 +52,10 @@
 					</div>
 				</section>
 
-				<section>
-					<h2>Break it down</h2>
+				<section data-background-image="img/break-it-down-now.jpg" data-background-position="bottom left" data-background-size="30%" data-background-transition="fade">
+					<h2>Break it down:<br>
+						<span class="subhead">Accessibility Testing</span>
+					</h2>
 					<ul>
 						<li>Who is impacted?</li>
 						<li>What can we do?</li>
@@ -163,13 +165,14 @@
 
 				<section>
 					<figure>
+						<figcaption>Keyboard Support</figcaption>
 						<img data-src="img/material2-keyevent.gif" alt="Material 2 checkbox operated with the keyboard">
-						<figcaption><a href="https://github.com/angular/material2/tree/master/src/components/checkbox">Material 2 checkbox using the keyboard</a></figcaption>
 					</figure>
 				</section>
 
 				<section>
 					<h3>Unit tests: keyboard support</h3>
+					<figure>
 					<pre><code class="javascript">
   describe('keyboard support', function() {
       var fixture: ComponentFixture;
@@ -190,11 +193,6 @@
         expect(el.nativeElement.className).toContain('menuitem-active');
 
         keyEvent('keydown', el, ' ', fixture);
-        expect(el.nativeElement.className).not.toContain('menuitem-active');
-      });
-
-      it('should close with the escape key', function(done: () => void) {
-        keyEvent('keydown', el, '27', fixture);
         expect(el.nativeElement.className).not.toContain('menuitem-active');
       });
   });
@@ -219,13 +217,21 @@
     fixture.detectChanges();
     return kbdEvent;
   }
-					</code></pre>
+						</code></pre>
+						<figcaption><a href="https://github.com/angular/material2/tree/master/src/components/checkbox">Material 2 checkbox</a></figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<p class="subhead">Mocking Keyboard Events</p>
+					<h3 class="h2-style" style="max-width: 900px; margin: 0 auto 0;">Reducing that wall of text is a todo for the Angular team</h3>
+					<img data-src="img/hell-yeah.jpg" alt="Success kid: Hell Yeah">
 				</section>
 
 				<section>
 					<figure>
 						<img data-src="img/md-checkbox2-chromecanary.png" alt="Material 2 checkbox in Chrome Canary Accessibility Inspector">
-						<figcaption>Material 2 checkbox a11y in Chrome Canary</figcaption>
+						<figcaption>a11y inspector in Chrome Canary</figcaption>
 					</figure>
 				</section>
 
@@ -271,13 +277,13 @@
 				</section>
 
 				<section>
-					<h3>Your options</h3>
+					<h3>APIs: Your options<br>(in general)</h3>
 					<ul>
 						<li>QUAIL</li>
 						<li>WAVE</li>
 						<li>aXe</li>
 						<li>Tenon</li>
-						<li>Chrome A11y Developer Tools</li>
+						<li>Chrome Accessibility<br>Developer Tools</li>
 					</ul>
 				</section>
 
@@ -292,6 +298,13 @@
 						<li>Also unit tests</li>
 					</ul>
 					<p id="footnote1" style="font-size: 0.75em;"><sup>&dagger;</sup>There&rsquo;s also a supported/enterprise option</p>
+				</section>
+
+				<section>
+					<figure>
+						<img data-src="img/md-checkbox2-axe.png" alt="Material 2 checkbox in the aXe Chrome extension">
+						<figcaption><a href="https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US">The axe-core API in a Chrome extension</a></figcaption>
+					</figure>
 				</section>
 <!-- 
 				<section>
@@ -318,7 +331,10 @@
 				</section>
  -->
 				<section>
-					<h3>Testing a component with aXe-core</h3>
+					<h3>Testing a component with aXe-core*</h3>
+					<pre><code class="bash">
+  npm install axe-core
+					</code></pre>
 					<pre><code class="javascript">
   require('axe-core/axe.js');
   declare var axe: any;
@@ -336,10 +352,7 @@
     });
   }));
 					</code></pre>
-				</section>
-
-				<section>
-					<h2>Demo</h2>
+					<p class="subhead"><small>*CommonJS module format, SystemJS support coming</small></p>
 				</section>
 
 				<section>
@@ -347,6 +360,7 @@
 					<ul>
 						<li>You need accessibility tests.</li>
 						<li>Unit test for keyboard support, usability basics</li>
+						<li>Use TestComponentBuilder for DOM testing</li>
 						<li>Use an API for extra a11y muscle</li>
 						<li>Prevent broken stuff from going out the door!</li>
 					</ul>

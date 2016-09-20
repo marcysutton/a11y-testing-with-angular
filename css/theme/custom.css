@@ -3,8 +3,8 @@
  *
  * By Hakim El Hattab, http://hakim.se
  */
-@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
-section.has-dark-background, section.has-dark-background h1, section.has-dark-background .reveal .h1-style, .reveal section.has-dark-background .h1-style, section.has-dark-background h2, section.has-dark-background .reveal .h2-style, .reveal section.has-dark-background .h2-style, section.has-dark-background h3, section.has-dark-background .reveal .h3-style, .reveal section.has-dark-background .h3-style, section.has-dark-background h4, section.has-dark-background .reveal .h4-style, .reveal section.has-dark-background .h4-style, section.has-dark-background .reveal .subhead, .reveal section.has-dark-background .subhead, section.has-dark-background h5, section.has-dark-background h6 {
+@import 'https://fonts.googleapis.com/css?family=BioRhyme|Roboto';
+section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background .reveal .subhead, .reveal section.has-dark-background .subhead, section.has-dark-background h5, section.has-dark-background h6 {
   color: #fff; }
 
 /*********************************************
@@ -15,7 +15,7 @@ body {
   background-color: #fff; }
 
 .reveal {
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-family: "Roboto", Helvetica, sans-serif;
   font-size: 38px;
   font-weight: normal;
   color: #222; }
@@ -33,21 +33,28 @@ body {
 /*********************************************
  * HEADERS
  *********************************************/
-.reveal h1, .reveal .h1-style,
-.reveal h2, .reveal .h2-style,
-.reveal h3, .reveal .h3-style,
-.reveal h4, .reveal .h4-style, .reveal .subhead,
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4, .reveal .subhead,
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #222;
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-family: "Roboto", Helvetica, sans-serif;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: normal;
-  text-transform: uppercase;
+  text-transform: none;
   text-shadow: none;
   word-wrap: break-word; }
+  .reveal h1.fancy,
+  .reveal h2.fancy,
+  .reveal h3.fancy,
+  .reveal h4.fancy, .reveal .fancy.subhead,
+  .reveal h5.fancy,
+  .reveal h6.fancy {
+    font-family: "BioRhyme", "Times New Roman", serif; }
 
 .reveal h1, .reveal .h1-style {
   font-size: 2.5em; }
@@ -58,10 +65,10 @@ body {
 .reveal h3, .reveal .h3-style {
   font-size: 1.3em; }
 
-.reveal h4, .reveal .h4-style, .reveal .subhead {
+.reveal h4, .reveal .subhead, .reveal .h4-style {
   font-size: 1em; }
 
-.reveal h1, .reveal .h1-style {
+.reveal h1 {
   text-shadow: none; }
 
 /*********************************************
@@ -285,18 +292,39 @@ body {
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
 
-.reveal h1, .reveal .h1-style, .reveal h2, .reveal .h2-style, .reveal h3, .reveal .h3-style, .reveal h4, .reveal .h4-style, .reveal .subhead, .reveal h5, .reveal h6 {
-  text-transform: none; }
-
 .reveal .subhead {
-  font-style: italic;
-  font-weight: bold; }
+  color: currentColor;
+  font-family: "Roboto", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-shadow: inherit; }
+  .reveal .subhead.fancy {
+    font-family: "BioRhyme", "Times New Roman", serif; }
+  .reveal .subhead.smaller {
+    font-size: 0.75em;
+    margin: 0; }
 
-.reveal h2 .subhead, .reveal .h2-style .subhead,
-.reveal h3 .subhead, .reveal .h3-style .subhead {
+.reveal .muted {
+  color: #8396a9;
+  display: block; }
+
+.reveal .subhead .muted {
   display: block;
-  font-size: 0.5em;
+  line-height: 2; }
+
+.reveal h2 .subhead,
+.reveal h3 .subhead {
+  display: block;
+  font-size: 0.75em;
   line-height: 1; }
+
+.reveal .inverted > * {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  display: inline-block;
+  padding: 0 0.25em; }
+  .reveal .inverted > * a:link {
+    color: currentColor; }
 
 .reveal .all-caps {
   text-transform: uppercase; }
@@ -312,43 +340,91 @@ body {
     background: #8dc63f;
     box-shadow: 2px 1px 3px #666; }
 
-.reveal .controls {
-  bottom: 110px; }
-
 .reveal pre code {
   font-family: Menlo, Courier, monospace;
   max-height: 520px; }
 
 .reveal figcaption {
-  font-style: italic;
   font-weight: bold; }
 
-.reveal figure.code {
+.reveal figure.code,
+.reveal figure.image-with-caption {
   box-sizing: border-box;
   position: relative;
-  width: 90%; }
-  .reveal figure.code *, .reveal figure.code *:before, .reveal figure.code *:after {
+  width: 100%; }
+  .reveal figure.code *, .reveal figure.code *:before, .reveal figure.code *:after,
+  .reveal figure.image-with-caption *,
+  .reveal figure.image-with-caption *:before,
+  .reveal figure.image-with-caption *:after {
     box-sizing: border-box; }
-  .reveal figure.code pre {
+  .reveal figure.code pre,
+  .reveal figure.image-with-caption pre {
     box-shadow: none;
     margin-bottom: 0;
     width: 100%; }
-    .reveal figure.code pre + figcaption {
-      background-color: rgba(255, 255, 255, 0.85);
-      color: #000;
-      font-size: 0.8em;
-      font-style: normal;
-      font-weight: bold;
-      margin-bottom: 25px;
-      padding: 10px 0 10px 20px;
-      text-align: left;
-      width: 100%; }
+    .reveal figure.code pre code.hljs,
+    .reveal figure.image-with-caption pre code.hljs {
+      background-color: inherit; }
+      .reveal figure.code pre code.hljs.large-tag,
+      .reveal figure.image-with-caption pre code.hljs.large-tag {
+        font-size: 2em;
+        line-height: 0.8;
+        overflow: hidden;
+        text-align: left; }
+  .reveal figure.code figcaption,
+  .reveal figure.image-with-caption figcaption {
+    background-color: #BFC9D3;
+    color: #222;
+    font-size: 0.8em;
+    font-style: normal;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+    text-align: left;
+    width: 100%; }
+    .reveal figure.code figcaption a,
+    .reveal figure.image-with-caption figcaption a {
+      color: currentColor;
+      text-decoration: underline; }
 
-.reveal .regular-case, .reveal .subhead {
+.reveal figure.support-table {
+  margin: 0 auto;
+  width: 900px; }
+  .reveal figure.support-table table {
+    font-size: 0.9em;
+    width: 100%; }
+  .reveal figure.support-table th:nth-child(2),
+  .reveal figure.support-table th:nth-child(3),
+  .reveal figure.support-table td:nth-child(2),
+  .reveal figure.support-table td:nth-child(3) {
+    text-align: center; }
+  .reveal figure.support-table thead th {
+    color: #8396a9;
+    border: 0;
+    padding-bottom: 1em; }
+  .reveal figure.support-table th[colspan="3"] {
+    background-color: rgba(0, 0, 0, 0.04); }
+  .reveal figure.support-table .group-end td {
+    border-bottom: 0;
+    padding-bottom: 1em; }
+
+.reveal figure.code {
+  background-color: rgba(0, 0, 0, 0.04); }
+
+.reveal figure.image-with-caption img {
+  border: 2px solid #8396a9;
+  border-bottom-width: 0;
+  box-shadow: none;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  width: 100%; }
+
+.reveal figure.image-with-caption > figcaption {
+  margin-bottom: 0; }
+
+.reveal .regular-case {
   text-transform: none; }
-
-.reveal .subhead {
-  font-style: italic; }
 
 .reveal .plain {
   background-color: transparent; }
@@ -356,6 +432,18 @@ body {
 /*********************************************
  * LAYOUTS
  *********************************************/
+.reveal .left-align {
+  text-align: left;
+  width: 90%;
+  margin: 0 auto; }
+  .reveal .left-align:not(.snug) > * + * {
+    margin-top: 100px; }
+  .reveal .left-align .big-heading {
+    font-family: "BioRhyme", "Times New Roman", serif;
+    font-size: 2.8em; }
+  .reveal .left-align [aria-hidden="true"] {
+    color: #8396a9; }
+
 .reveal li .twoThirdsCol {
   padding-top: 2%; }
   .reveal li .twoThirdsCol small {
@@ -382,8 +470,49 @@ body {
   width: 100%; }
 
 .reveal .halfCol {
+  box-sizing: border-box;
   display: inline-block;
-  width: 48%; }
+  margin: 0 0.5%;
+  width: 48%;
+  vertical-align: top; }
+  .reveal .halfCol h2, .reveal .halfCol h3 {
+    text-align: left; }
+  .reveal .halfCol ul {
+    display: block;
+    padding: 0; }
+  .reveal .halfCol li {
+    margin: 0;
+    list-style-position: inside; }
+
+.reveal .word-cloud {
+  width: 300px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  text-align: justify; }
+
+.reveal .word-cloud__word {
+  display: inline-block;
+  font-size: 1.2em;
+  line-height: 1;
+  padding: 0 0.5em;
+  text-align: center; }
+  .reveal .word-cloud__word.x-small, .reveal .word-cloud__word.small {
+    font-weight: 100; }
+  .reveal .word-cloud__word.x-small {
+    font-size: 2em;
+    color: #72a230; }
+  .reveal .word-cloud__word.small {
+    font-size: 3em;
+    color: #8396a9; }
+  .reveal .word-cloud__word.large {
+    font-size: 4.25em;
+    color: #4c8ae0; }
+  .reveal .word-cloud__word.x-large {
+    font-size: 4.85em;
+    letter-spacing: -0.0125em;
+    color: #0D6EF1; }
 
 .reveal .layeredFragments {
   margin: 0 auto;
@@ -421,7 +550,10 @@ body {
 /*********************************************
  * Custom Slides
  *********************************************/
-.deque-title-slide.slide-background:after {
+.deque-title-slide .controls {
+  bottom: 110px; }
+
+.deque-title-slide .slide-background:after {
   background-color: #BFC9D3;
   bottom: 0;
   content: '';
@@ -445,11 +577,11 @@ body {
   width: 65%; }
 
 @media screen and (max-width: 1024px) {
-  .deque-title-slide.slide-background:after {
+  .deque-title-slide .slide-background:after {
     display: none; }
   .deque-title-slide .left img.deque {
     max-width: 300px; }
-  .deque-title-slide .right h1, .deque-title-slide .right .reveal .h1-style, .reveal .deque-title-slide .right .h1-style {
+  .deque-title-slide .right h1 {
     font-size: 1.5em; } }
 
 @media screen and (max-width: 600px) {
@@ -461,34 +593,40 @@ body {
     float: none;
     margin: 0 auto;
     width: 90%; }
-    .deque-title-slide .right h1, .deque-title-slide .right .reveal .h1-style, .reveal .deque-title-slide .right .h1-style {
+    .deque-title-slide .right h1 {
       font-size: 1.5em;
       text-align: center; }
     .deque-title-slide .right p {
       font-size: 0.75em; } }
 
 #wallace-gromit {
-  background: #181818 url(../../img/wallace-gromit.jpg) no-repeat top right;
+  background: rgba(0, 0, 0, 0.04) url(../../img/wallace-gromit.jpg) no-repeat top right;
   padding-bottom: 33px; }
   #wallace-gromit code {
     background-color: transparent; }
 
+.reveal .border-top {
+  border-top: 3px solid #ccc; }
+
+.reveal .border-bottom {
+  border-bottom: 3px solid #ccc;
+  display: inline-block;
+  padding: 0 2em 0.5em; }
+
 #oh-hai-images {
-  margin-top: 1em;
+  display: inline-block;
+  margin-top: 0em;
   text-align: center; }
   #oh-hai-images img, #oh-hai-images div {
-    display: inline-block;
     vertical-align: middle; }
   #oh-hai-images div {
-    max-width: 320px;
-    margin: 0 20px 0 10px;
+    margin: 10px 0 0;
     text-align: center; }
   #oh-hai-images .angular {
     max-width: 300px; }
   #oh-hai-images .axe {
     background-color: #fff;
-    padding: 10px;
-    width: 300px; }
+    width: 400px; }
   #oh-hai-images .gdi {
     max-width: 250px; }
   #oh-hai-images .slack {

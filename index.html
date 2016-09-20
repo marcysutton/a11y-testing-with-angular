@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Accessibility Testing in Angular 2 - Marcy Sutton</title>
+		<title>Accessibility Testing in Angular - Marcy Sutton</title>
 
-		<meta name="description" content="A presentation on accessibility testing in Angular 2">
+		<meta name="description" content="A presentation on accessibility testing in Angular 1 and Angular 2">
 		<meta name="author" content="Marcy Sutton">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -39,12 +39,12 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-background-color="#fff" class="deque-title-slide">
+				<section data-state="deque-title-slide" class="title-slide">
 					<div class="left">
 						<img src="img/deque-logo.png" alt="Deque" class="plain deque">
 					</div>
 					<div class="right">
-						<h1>Accessibility Testing<br>with Angular 2</h1>
+						<h1>Accessibility Testing<br>with Angular</h1>
 						<p>
 							By <a href="http://marcysutton.com">Marcy Sutton</a> / <a href="http://twitter.com/marcysutton">@MarcySutton</a><br>
 							Senior Front-End Engineer, Deque Systems
@@ -52,55 +52,144 @@
 					</div>
 				</section>
 
-				<section data-background-image="img/break-it-down-now.jpg" data-background-position="bottom left" data-background-size="30%" data-background-transition="fade">
-					<h2>Break it down:<br>
-						<span class="subhead">Accessibility Testing</span>
-					</h2>
+				<section>
+					<h2>Kdo je Marcy Sutton?</h2>
+					<div id="oh-hai-images" class="border-top">
+						<div>
+							<img data-src="img/axe-core.png" alt="axe-core" class="axe plain">
+						</div>
+						<img data-src="img/egghead-dot-io-logo.png" alt="Egghead.io" class="egghead plain">
+						<img data-src="img/angularjs-logo.png" alt="AngularJS" class="angular plain">
+						<img data-src="img/gdi_logo_badge.png" alt="Girl Develop It" class="gdi plain">
+					</div>
+				</section>
+
+				<section>
+					<h2 class="h1-style left-align">Why Accessibility?</h2>
+					<aside class="notes">
+					1/5 of the world's population has some kind of disability
+					It's the right thing to do
+					Lose potential customers
+					You might need it in the future
+					</aside>
+				</section>
+
+				<section>
+					<div class="left-align">
+						<h2 class="h1-style fancy">
+							15% of the population
+							<span class="subhead">has some kind of disability</span>
+						</h2>
+						<p><small><a href="http://www.who.int/mediacentre/factsheets/fs352/en/">Source: World Health Organization</a></small></p>
+					</div>
+				</section>
+
+				<section>
+					<div class="ability-table">
+						<div class="halfCol" style="padding-left: 5%">
+							<h3 class="h2-style">Some people can&rsquo;t:</h3>
+							<ul>
+								<li>Use a mouse</li>
+								<li>View a screen</li>
+								<li>See low contrast text</li>
+								<li>Hear dialogue or music</li>
+								<li>Understand complex language</li>
+							</ul>
+						</div>
+						<div class="halfCol fragment" style="padding-left: 5%">
+							<h3 class="h2-style">Some people need:</h3>
+							<ul>
+								<li>Keyboard support</li>
+								<li>Screen reader support</li>
+								<li>High contrast text</li>
+								<li>Captions and transcripts</li>
+								<li>Plain language</li>
+							</ul>
+						</div>
+				</section>
+
+				<section>
+					<h3 class="h1-style fancy">Guess what: you can help!</h3>
+					<p class="subhead">&hellip;by making the Internet more accessible.</p>
+				</section>
+
+				<section>
+					<h2 class="fancy">#A11y in Angular Apps</h2>
 					<ul>
-						<li>Who is impacted?</li>
-						<li>What can we do?</li>
-						<li>How can we do it?</li>
+						<li>Write meaningful HTML</li>
+						<li>Enable the keyboard</li>
+						<li>Handle focus</li>
+						<li>Alert the user</li>
+						<li>Coverage with tests</li>
 					</ul>
+					<aside class="notes">
+					WebExpo: This stuff is all new and necessary. Accessibility basics that can be tested. How-to in ng1 and ng2.
+					
+					Angular Connect: While the basics are important, testing is critical to success. Here's how-to in ng1 and ng2.
+
+					Back in 2014 I gave a talk at ngEurope that covered the basics of Angular accessibility. These are still the essential things to consider for accessibility as it relates to Angular and all client-rendered frameworks.
+					</aside>
 				</section>
 
 				<section>
-					<h2 class="h1-style">
-						15% of the population
-						<em class="subhead">has some kind of disability</em>
-					</h2>
-					<p><small><a href="http://www.who.int/mediacentre/factsheets/fs352/en/">Source: World Health Organization</a></small></p>
+					<div class="left-align">
+						<h3 class="h1-style">Meaningful HTML</h3>
+						<figure class="code">
+							<pre><code class="html large-tag">
+ &lt;button>Help&lt;/button>
+							</code></pre>
+							<figcaption>HTML Button</figcaption>
+						</figure>
+					</div>
+				</section>
+
+				<section data-background-image="img/ngmaterial-button-a11y-inspector.png">
+					<h3 class="offscreen">Angular Material button in Chrome Accessibility Inspector</h3>
+					<p class="offscreen">CSS changes button text to uppercase following the Material Design guidelines, which shows in the accessibility tree</p>
 				</section>
 
 				<section>
-					<h3 class="h2-style">Some people can&rsquo;t:</h3>
-					<ul>
-						<li class="fragment">Use a mouse</li>
-						<li class="fragment">View a screen</li>
-						<li class="fragment">See low contrast text</li>
-						<li class="fragment">Hear dialogue or music</li>
-						<li class="fragment">Understand complex language</li>
-					</ul>
+					<h2>Keyboard support</h2>
+					<!-- some kind of demo showing tabbability -->
 				</section>
 
 				<section>
-					<h3 class="h2-style">Some people need:</h3>
-					<ul>
-						<li class="fragment">Keyboard support</li>
-						<li class="fragment">Screen reader support</li>
-						<li class="fragment">High contrast text</li>
-						<li class="fragment">Captions and transcripts</li>
-						<li class="fragment">Plain language</li>
-					</ul>
+					<h2>Handle focus</h2>
+					<!-- show focus management that builds on keyboard support -->
 				</section>
 
 				<section>
-					<h3 class="h1-style">Guess what: you can help!</h3>
-					<p class="subhead"><em>&hellip;by making the Internet more accessible.</em></p>
+					<h2>Alert the user</h2>
+					<!-- demonstrate the need for live regions -->
+					<!--  -->
 				</section>
 
 				<section>
-					<h2 class="h1-style">
-						<em class="subhead">Build accessibility into your workflow with</em>
+					<h2>Intro to ARIA</h2>
+					<!-- demonstrate disabled / ng-disabled -->
+				</section>
+
+				<section data-background-image="img/ngaria.png">
+					<div class="offscreen">
+						<h2>ngAria</h2>
+						<p>aria-checked code example and link to documentation https://docs.angularjs.org/api/ngAria</p>
+					</div>
+				</section>
+
+				<section>
+					<h2>While ngAria was a worthwhile effort,<br>it only helps certain use cases.</h2>
+					<img data-src="img/cat-flower.gif">
+					<!-- TRY NOT TO TRASH ngARIA BUT EXPLAIN WHY TESTING IS BETTER -->
+				</section>
+
+				<!--<section>
+					<h2 style="margin-bottom: 0;">It's been a while&hellip;</h2>
+					<img data-src="img/Angular-Material-RadioButtons.png" alt="A really old version of Angular Material" class="plain">
+				</section>-->
+				
+				<section>
+					<h2 class="h1-style fancy">
+						<span class="subhead smaller">Build accessibility into your workflow <br><span class="muted">~ with ~</span></span>
 						Automated Testing</h2>
 					<aside class="notes">
 					DOM vs. accessibility/ ax tree
@@ -110,13 +199,30 @@
 				</section>
 
 				<section>
-					<p class="offscreen">1 of 2</p>
-					<h2>Component-Specific Unit Tests</h2>
+					<h2 class="h1-style fancy">
+						<span class="subhead smaller muted">~ But ~</span>
+						It&rsquo;s no substitute for real user feedback</h2>
+					<aside class="notes">
+					Because of the differences in screen readers vs. browser tools / best practices
+					</aside>
+				</section>
+
+				<section>
+					<div class="left-align">
+						<!-- highlight first topic, gray out second -->
+						<p class="subhead" style="margin-top: -60px;">Testing for accessibility in:</p>
+						<h2 class="big-heading">Angular 1*</h2>
+						<h2 class="big-heading" aria-hidden="true">Angular 2</h2>
+					</div>
+				</section>
+
+				<section>
+					<h2 class="h1-style fancy" style="margin-top:-50px;">Directive-Specific<br>Unit Tests</h2>
 					<div class="fragment">
-						<p><em class="subhead">Good for:</em></p>
+						<p class="subhead muted">Good for:</p>
 						<ul>
 							<li>Text alternatives / Labeling</li>
-							<li>Keyboard Operability</li>
+							<li>Keyboard operability</li>
 							<li>ARIA attribute watching</li>
 						</ul>
 					</div>
@@ -128,139 +234,72 @@
 				</section>
 
 				<section>
-					<figure>
-						<img data-src="img/md-checkbox2-voiceover.png" alt="Material 2 checkbox operated with Voiceover" style="max-width: 1100px">
-						<figcaption><a href="https://github.com/angular/material2/tree/master/src/components/checkbox">Material 2 checkbox using Voiceover</a></figcaption>
-					</figure>
-				</section>
+					<div class="left-align snug">
+						<h3 class="h2-style">Labeling unit test</h3>
+						<figure class="code">
+						<pre style="font-size:0.75em"><code class="javascript">
+  it('should apply aria-hidden="true" when parent has valid label', 
+  inject(function() {
 
-				<section>
-					<h3>Unit testing for text alternatives</h3>
-					<h4>aria-labelledby</h4>
-					<pre><code class="javascript">
- describe('MdCheckbox', function() {
-  var builder: TestComponentBuilder;
+    var el = make('&lt;md-radio-button aria-label="Squishy Avatar" '+
+    				   'role="radio" tabindex="0"> '+
+                '&lt;div class="md-container">&lt;/div> '+
+                  '&lt;div class="md-label"> '+
+                  '&lt;md-icon md-svg-icon="android">&lt;/md-icon> '+
+                '&lt;/div>&lt;/md-radio-button>');
 
-  beforeEach(inject([TestComponentBuilder], function(tcb: TestComponentBuilder) {
-    builder = tcb;
+    expect(el.find('md-icon').attr('aria-hidden')).toEqual('true');
   }));
-
-  it('sets the "aria-labelledby" attribute to the id of the label', function(done: () => void) {
-      builder.createAsync(CheckboxController).then(function(fixture) {
-        fixture.detectChanges();
-        let el = fixture.debugElement.query(By.css('.md-checkbox'));
-        let label = el.nativeElement.querySelector('label');
-
-        expect(el.nativeElement.getAttribute('aria-labelledby')).toEqual(label.id);
-      }).then(done).catch(done);
-    });
- });
-					</code></pre>
-				</section>
-
-				<!-- <section>
-					<h3>Unit testing for text alternatives</h3>
-					<h4>aria-label, label/for</h4>
-				</section> -->
-
-				<section>
-					<figure>
-						<figcaption>Keyboard Support</figcaption>
-						<img data-src="img/material2-keyevent.gif" alt="Material 2 checkbox operated with the keyboard">
-					</figure>
-				</section>
-
-				<section>
-					<h3>Unit tests: keyboard support</h3>
-					<figure>
-					<pre><code class="javascript">
-  describe('keyboard support', function() {
-      var fixture: ComponentFixture;
-      var controller: MenuController;
-      var el: DebugElement;
-
-      beforeEach(function(done: () => void) {
-        builder.createAsync(MenuController).then(function(f) {
-          fixture = f;
-          controller = fixture.componentInstance;
-          fixture.detectChanges();
-          el = fixture.debugElement.query(By.css('.menuitem'));
-        }).then(done).catch(done);
-      });
-
-      it('should toggle with the spacebar', function(done: () => void) {
-        keyEvent('keydown', el, ' ', fixture);
-        expect(el.nativeElement.className).toContain('menuitem-active');
-
-        keyEvent('keydown', el, ' ', fixture);
-        expect(el.nativeElement.className).not.toContain('menuitem-active');
-      });
-  });
-  function keyEvent(name: string, el: DebugElement, key: string, fixture: ComponentFixture): Event {
-    var kbdEvent: Event;
-    if (BROWSER_SUPPORTS_EVENT_CONSTRUCTORS) {
-      kbdEvent = new KeyboardEvent(name);
-    } else {
-    kbdEvent = document.createEvent('Event');
-    kbdEvent.initEvent(name, true, true);
-  
-    // Hack DOM Level 3 Events "key" prop into keyboard event.
-    Object.defineProperty(kbdEvent, 'key', {
-      value: key,
-      enumerable: false,
-      writable: false,
-      configurable: true
-    });
-    spyOn(kbdEvent, 'preventDefault').and.callThrough();
-    spyOn(kbdEvent, 'stopPropagation').and.callThrough();
-    el.nativeElement.dispatchEvent(kbdEvent);
-    fixture.detectChanges();
-    return kbdEvent;
-  }
 						</code></pre>
-						<figcaption><a href="https://github.com/angular/material2/tree/master/src/components/checkbox">Material 2 checkbox</a></figcaption>
-					</figure>
+						<figcaption><a href="https://github.com/angular/material/blob/master/src/components/icon/icon.spec.js">mdIcon Spec</a></figcaption>
+						</figure>
+					</div>
 				</section>
 
 				<section>
-					<p class="subhead">Mocking Keyboard Events</p>
-					<h3 class="h2-style" style="max-width: 900px; margin: 0 auto 0;">Reducing that wall of text is a todo for the Angular team</h3>
-					<img data-src="img/hell-yeah.jpg" alt="Success kid: Hell Yeah">
+					<div class="left-align large-tag snug">
+						<h3 class="h2-style">Keyboard unit test</h3>
+						<figure class="code">
+						<pre style="font-size:0.75em"><code class="javascript">
+   it('closes on escape', inject(function($document, $mdConstant) {
+      var menu = setup();
+      openMenu(menu);
+      expect(getOpenMenuContainer(menu).length).toBe(1);
+
+      var openMenuEl = $document[0].querySelector('md-menu-content');
+
+      pressKey(openMenuEl, $mdConstant.KEY_CODE.ESCAPE);
+      waitForMenuClose();
+
+      expect(getOpenMenuContainer(menu).length).toBe(0);
+    }));
+						</code></pre>
+						<figcaption><a href="https://github.com/angular/material/blob/master/src/components/menu/menu.spec.js">mdMenu Spec</a></figcaption>
+						</figure>
+					</div>
 				</section>
 
 				<section>
-					<figure>
-						<img data-src="img/md-checkbox2-chromecanary.png" alt="Material 2 checkbox in Chrome Canary Accessibility Inspector">
-						<figcaption>a11y inspector in Chrome Canary</figcaption>
-					</figure>
-				</section>
-
-				<section>
-					<h3>Unit tests: ARIA attribute watching</h3>
-					<pre><code class="javascript">	
-    it('toggles "aria-checked" on the host element', function() {
-      builder.createAsync(CheckboxController).then(function(fixture) {
-        let el = fixture.debugElement.query(By.css('.md-checkbox'));
-
-        expect(el.nativeElement.getAttribute('aria-checked')).toEqual('false');
-
-        controller = fixture.componentInstance;
-        changePromise = waitForChange();
-        controller.isChecked = true;
-
-        fixture.detectChanges();
-
-        expect(el.nativeElement.getAttribute('aria-checked')).toEqual('true');
-      });
-    });
-					</code></pre>
-				</section>
-
-				<section>
-					<p class="offscreen">2 of 2</p>
-					<h2>Testing with an accessibility API</h2>
+					<h2 class="h1-style fancy" style="margin-top:-50px;">Integration/ <br>End-to-End Tests</h2>
 					<div class="fragment">
-						<p><em class="subhead">Save yourself from testing:</em></p>
+						<p class="subhead muted">Good for:</p>
+						<ul>
+							<li>Color contrast</li>
+							<li>Widget keyboard interrop</li>
+							<li>Document-level rules</li>
+						</ul>
+					</div>
+					<aside class="notes">
+					Escape key, tabbing, hitting Enter/Space, Arrow keys
+					offscreen/attribute text computation (stuff you don't see)
+					ARIA default values for custom elements
+					</aside>
+				</section>
+
+				<section>
+					<h2 class="fancy">Get help with an API</h2>
+					<div>
+						<p><em class="subhead">Save yourself from:</em></p>
 						<ul>
 							<li>Label/name computation</li>
 							<li>Incorrect ARIA usage</li>
@@ -277,18 +316,18 @@
 				</section>
 
 				<section>
-					<h3>APIs: Your options<br>(in general)</h3>
-					<ul>
-						<li>QUAIL</li>
-						<li>WAVE</li>
-						<li>aXe</li>
-						<li>Tenon</li>
-						<li>Chrome Accessibility<br>Developer Tools</li>
+					<h3 class="fancy border-bottom" style="margin-top: -1em;">A11y test APIs: You&rsquo;ve got options</h3>
+					<ul class="wordcloud" style="margin-left: 4em;">
+						<li class="word-cloud__word x-large" style="margin-left: 1.55em;">aXe</li>
+						<li class="word-cloud__word x-small">Chrome A11y Developer Tools</li>
+						<li class="word-cloud__word small">QUAIL</li>
+						<li class="word-cloud__word large">Tenon</li>
+						<li class="word-cloud__word small" style="margin-left: 2em;">WAVE</li>
 					</ul>
 				</section>
 
 				<section>
-					<h3 class="h2-style">aXe-core API</h3>
+					<h3 class="h2-style fancy">axe-core API</h3>
 					<p><a href="https://github.com/dequelabs/axe-core">https://github.com/dequelabs/axe-core</a></p>
 					<ul>
 						<li>Runs locally</li>
@@ -297,20 +336,302 @@
 						<li>Good for integration tests</li>
 						<li>Also unit tests</li>
 					</ul>
-					<p id="footnote1" style="font-size: 0.75em;"><sup>&dagger;</sup>There&rsquo;s also a supported/enterprise option</p>
+					<p id="footnote1" style="font-size: 0.75em;"><sup>&dagger;</sup>There&rsquo;s also a supported/enterprise option, Worldspace Attest</p>
 				</section>
 
 				<section>
-					<figure>
-						<img data-src="img/md-checkbox2-axe.png" alt="Material 2 checkbox in the aXe Chrome extension">
-						<figcaption><a href="https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US">The axe-core API in a Chrome extension</a></figcaption>
+					<figure class="left-align snug">
+						<figcaption style="margin-top: -1em;">
+							aXe Chrome extension ~ <a href="http://bit.ly/axe-chrome">http://bit.ly/axe-chrome</a></figcaption>
+						<img data-src="img/angularjs-docs-axe.png" alt="Angular.js Docs in the aXe Chrome extension" class="plain">
 					</figure>
 				</section>
-<!-- 
+
 				<section>
-					<h3>Testing a page with aXe-core</h3>
-					<h4>TODO: test whole page</h4>
-					<pre><code class="javascript">
+					<figure class="left-align snug">
+						<figcaption style="margin-top: -1em;">Angular Material Demo App</figcaption>
+						<img data-src="img/angular-material-muppet-app.jpg" alt="Angular Material Muppets app" class="plain">
+					</figure>
+				</section>
+
+				<section>
+					<div class="left-align snug">
+						<h3 class="h2-style">Demo App Template</h3>
+						<figure class="code">
+							<pre><code class="javascript">
+  &lt;md-toolbar layout="row">
+	&lt;h1 layout-align-gt-sm="center center" class="md-toolbar-tools">My Favorite Muppets&lt;/h1>
+  &lt;/md-toolbar>
+  &lt;div layout="row" flex class="content-wrapper">
+    &lt;md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+        &lt;md-list class="muppet-list">
+          &lt;md-item ng-repeat="it in muppets">
+            &lt;md-item-content>
+              &lt;md-button ng-click="selectMuppet(it)" ng-class="{'selected' : it === selected }">
+                &lt;img ng-src="{{it.iconurl}}" class="face" alt="">
+                {{it.name}}
+              &lt;/md-button>
+            &lt;/md-item-content>
+          &lt;/md-item>
+        &lt;/md-list>
+      &lt;/md-sidenav>
+      &lt;div layout="column" flex class="content-wrapper" id="primary-col">
+          &lt;md-content layout="column" flex class="md-padding">
+            &lt;h2>{{selected.name}}&lt;/h2>
+            &lt;p>{{selected.content}}&lt;/p>
+            &lt;div class="cell">
+              &lt;img ng-src="{{selected.imgurl}}" alt="{{selected.imgalt}}">
+            &lt;/div>
+          &lt;/md-content>
+      &lt;/div>
+  &lt;/div>
+						</code></pre>
+						<figcaption><a href="http://bit.ly/ngmaterial-muppets">http://bit.ly/ngmaterial-muppets</a></figcaption>
+					</figure>
+					</div>
+				</section>
+
+				<section>
+					<div class="left-align snug">
+						<h3 class="h2-style">End-to-End Test</h3>
+						<figure class="code">
+						<pre><code class="javascript">
+  var AxeBuilder = require('axe-webdriverjs');
+
+  describe('view1', function() {
+
+    beforeEach(function() { browser.get('index.html'); });
+
+    it('should change Muppets', function() {
+      element.all(by.css('[ng-click="selectMuppet(it)"]')).first().
+        sendKeys(protractor.Key.ENTER);
+
+      expect(element.all(by.css('#primary-col h2')).first().getText()).
+        toMatch('Animal');
+    });
+
+    it('should have no accessibility violations', function(done) {
+      AxeBuilder(browser)
+        .analyze(function(results) {
+          if (results.violations.length > 0) {
+            console.log(results.violations);
+          }
+          expect(results.violations.length).toBe(0);
+          done();
+      });
+  });
+						</code></pre>
+						<figcaption><a href="https://github.com/dequelabs/axe-webdriverjs">https://github.com/dequelabs/axe-webdriverjs</a></figcaption>
+					</div>
+				</section>
+
+				<section>
+					<h2 class="h1-style">Command-Line Demo</h2>
+				</section>
+
+				<section>
+					<div class="left-align">
+						<!-- highlight first topic, gray out second -->
+						<p class="subhead" style="margin-top: -60px;">Testing for accessibility in:</p>
+						<h2 class="big-heading" aria-hidden="true">Angular 1</h2>
+						<h2 class="big-heading">Angular 2*</h2>
+					</div>
+				</section>
+
+				<section data-background-image="img/angular2-test-strategies.png">
+					<h3 class="offscreen">Medium article by Victor Savkin: Three Ways to Test Angular 2 Components</h3>
+				</section>
+
+				<section>
+					<figure class="support-table">
+					<table>
+						<caption>
+							<h2 class="fancy">Test requirements for a11y</h2>
+						</caption>
+						<thead>
+							<tr>
+								<th scope="row">Test method</th>
+								<th scope="col">Rendered</th>
+								<th scope="col">Attached</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th colspan="3">Unit</th>
+							</tr>
+							<tr class="group-lead">
+								<td>Keyboard mechanics</td>
+								<td>X</td>
+								<td>X</td>
+							</tr>
+							<tr>
+								<td>Labeling</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr class="group-end">
+								<td>ARIA attributes</td>
+								<td>~</td>
+								<td>~</td>
+							</tr>
+							<tr>
+								<th colspan="3">End-to-end</th>
+							</tr>
+							<tr class="group-lead">
+								<td>Color contrast</td>
+								<td>X</td>
+								<td>X</td>
+							</tr>
+							<tr>
+								<td>Event handlers</td>
+								<td>~</td>
+								<td>~</td>
+							</tr>
+							<tr class="group-end">
+								<td>A11y API Audit</td>
+								<td>X</td>
+								<td>X</td>
+							</tr>
+						</tbody>
+					</table>
+					</figure>
+				</section>
+
+				<section data-background-image="img/angular2-test-event-request.png">
+					<h3 class="offscreen">Angular 2 issue on Github: Creating fake event objects for testing components</h3>
+				</section>
+
+				<section>
+					<div class="left-align snug">
+						<h3 class="fancy">Angular 2 Keyboard Unit Tests</h3>
+						<img data-src="img/bleeding-edge.gif" alt="Gif with Supergirl saying I'm Bleeding?">
+					</div>
+				</section>
+
+				<section>
+					<div class="left-align snug">
+						<h3 class="fancy">Material 2 Unit Test 1/2</h3>
+						<h4>Applying a text alternative with `aria-labelledby`</h4>
+						<figure class="code">
+							<pre><code class="javascript">
+ describe('mdCheckbox with provided aria-labelledby ', () => {
+    let checkboxDebugElement: DebugElement;
+    let checkboxNativeElement: HTMLElement;
+    let inputElement: HTMLInputElement;
+
+    it('should use the provided aria-labelledby', () => {
+      fixture = TestBed.createComponent(CheckboxWithAriaLabelledby);
+      checkboxDebugElement = fixture.debugElement.query(By.directive(MdCheckbox));
+      checkboxNativeElement = checkboxDebugElement.nativeElement;
+      inputElement = &lt;HTMLInputElement>checkboxNativeElement.querySelector('input');
+
+      fixture.detectChanges();
+      expect(inputElement.getAttribute('aria-labelledby')).toBe('some-id');
+  });
+					</code></pre>
+					<figcaption><a href="https://github.com/angular/material2/blob/master/src/lib/checkbox/checkbox.spec.ts">Checkbox Spec</a></figcaption>
+					</figure>
+					</div>
+				</section>
+
+				<section>
+					<div class="left-align snug">
+						<h3 class="fancy">Material 2 Unit Test 2/2</h3>
+						<h4>ARIA attribute watching</h4>
+						<figure class="code">
+							<pre><code class="javascript">	
+    it('toggles "aria-checked" on the host element', function() {
+      builder.createAsync(CheckboxController).then(function(fixture) {
+        let el = fixture.debugElement.query(By.css('.md-checkbox'));
+
+        expect(el.nativeElement.getAttribute('aria-checked')).toEqual('false');
+
+        controller = fixture.componentInstance;
+        changePromise = waitForChange();
+        controller.isChecked = true;
+
+        fixture.detectChanges();
+
+        expect(el.nativeElement.getAttribute('aria-checked')).toEqual('true');
+      });
+    });
+							</code></pre>
+							<figcaption>Older Material 2 Checkbox</figcaption>
+						</figure>
+					</div>
+				</section>
+
+				<section>
+					<h2 class="fancy">End-to-End Testing in Angular 2</h2>
+					<p class="subhead muted">~ with ~</p>
+					<h3 class="fancy h1-style">Protractor</h3>
+				</section>
+
+ 				<section>
+	 				<div class="left-align">
+	 				<figure class="code">
+	 				<pre><code class="javascript">
+  /*----- menu.e2e.ts -------*/
+  import { MenuPage } from './menu-page';
+
+  describe('menu', () => {
+    let page: MenuPage;
+
+    beforeEach(function() {
+      page = new MenuPage();
+    });
+
+    describe('keyboard events', () => {
+      beforeEach(() => {
+        // click start button to avoid tabbing past navigation
+        page.start().click();
+        page.pressKey(protractor.Key.TAB);
+      });
+
+      it('should auto-focus the first item when opened with keyboard', () => {
+        page.pressKey(protractor.Key.ENTER);
+        page.expectFocusOn(page.items(0));
+     });
+
+      it('should focus subsequent items when down arrow is pressed', () => {
+        page.pressKey(protractor.Key.ENTER);
+        page.pressKey(protractor.Key.DOWN);
+        page.expectFocusOn(page.items(1));
+      });
+    });
+  });
+
+  /*----- menu-page.ts -------*/
+  pressKey(key: any): void {
+    browser.actions().sendKeys(key).perform();
+  }
+
+  expectFocusOn(el: ElementFinder): void {
+    expect(browser.driver.switchTo().activeElement().getInnerHtml())
+        .toBe(el.getInnerHtml());
+  }
+
+	 				</code></pre>
+	 				<figcaption><a href="https://github.com/angular/material2/blob/master/e2e/components/menu/">Material 2 Menu</a></figcaption>
+	 				</figure>
+	 				</div>
+ 				</section>
+
+				<section>
+					<div class="left-align">
+						<h2 class="fancy">Mocking Keyboard Events</h2>
+						<h3 style="margin: 0;">Bug in ChromeDriver</h3>
+
+						<p>DOM helper getKeyEvent does not use keyCode<br>
+						<a href="https://github.com/angular/angular/issues/9419">https://github.com/angular/angular/issues/9419</a></p>
+					</div>
+				</section>
+
+				<section>
+					<div class="left-align snug">
+						<h3 class="fancy">End-to-end Testing with aXe-core</h3>
+						<figure class="code">
+							<pre><code class="javascript">
   require('axe-core/axe.js');
   declare var axe: any;
   
@@ -327,32 +648,10 @@
       });
     });
   }));
-					</code></pre>
-				</section>
- -->
-				<section>
-					<h3>Testing a component with aXe-core*</h3>
-					<pre><code class="bash">
-  npm install axe-core
-					</code></pre>
-					<pre><code class="javascript">
-  require('axe-core/axe.js');
-  declare var axe: any;
-
-  ...
-
-  it('should have a form label', injectAsync([ TestComponentBuilder ], (tcb: TestComponentBuilder) => {
-    return tcb.createAsync(Home).then((componentFixture: ComponentFixture) => {
-      const element = componentFixture.nativeElement;
-
-      axe.a11yCheck(element, null, (result) => {
-        console.log(result);
-        expect(result.violations.length).toBe(0);
-      });
-    });
-  }));
-					</code></pre>
-					<p class="subhead"><small>*CommonJS module format, SystemJS support coming</small></p>
+							</code></pre>
+							<figcaption></figcaption>
+						</figure>
+					</div>
 				</section>
 
 				<section>
@@ -383,10 +682,7 @@
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 			    width: '100%',
-			    height: '100%',
 			    margin: 0,
-			    minScale: 0.25,
-			    maxScale: 1.5,
 				controls: true,
 				progress: true,
 				history: true,

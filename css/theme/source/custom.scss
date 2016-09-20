@@ -1,39 +1,48 @@
 @import 'white';
 
-$codeBgColor: #181818;
-$dequeLogoColor: #00274d;
-$dequeBgColor: #BFC9D3;
-$accentColor: #8dc63f;
-
-$tablet: 'screen and (max-width: 1024px)';
-$mobile: 'screen and (max-width: 600px)';
-
 .reveal {
-  h1, h2, h3, h4, h5, h6 {
-    text-transform: none;
-  }
-  .h1-style {
-    @extend h1;
-  }
-  .h2-style {
-    @extend h2;
-  }
-  .h3-style {
-    @extend h3;
-  }
-  .h4-style {
-    @extend h4;
-  }
   .subhead {
     @extend h4;
-    font-style: italic;
+    color: currentColor;
+    font-family: $mainFont;
+    font-style: normal;
     font-weight: bold;
+    text-shadow: inherit;
+
+    &.fancy {
+      font-family: $headingFont;
+    }
+    &.smaller {
+      font-size: 0.75em;
+      margin: 0;
+    }
+  }
+  .muted {
+    color: $mutedColor;
+    display: block;
+  }
+  .subhead .muted {
+    display: block;
+    line-height: 2;
   }
   h2 .subhead,
   h3 .subhead {
     display: block;
-    font-size: 0.5em;
+    font-size: 0.75em;
     line-height: 1;
+  }
+
+  .inverted {
+    &> * {
+      background-color: rgba(0, 0, 0, 0.7); 
+      color: #fff;
+      display: inline-block;
+      padding: 0 0.25em;
+
+      a:link {
+        color: currentColor;
+      }
+    }
   }
   .all-caps {
     text-transform: uppercase;
@@ -51,22 +60,19 @@ $mobile: 'screen and (max-width: 600px)';
       box-shadow: 2px 1px 3px #666;
     }
   }
-  .controls {
-    bottom: 110px;
-  }
 
   pre code {
     font-family: Menlo, Courier, monospace;
     max-height: 520px;
   }
   figcaption {
-    font-style: italic;
     font-weight: bold;
   }
-  figure.code {
+  figure.code,
+  figure.image-with-caption {
     box-sizing: border-box;
     position: relative;
-    width: 90%;
+    width: 100%;
 
     *, *:before, *:after {
       box-sizing: border-box;
@@ -77,25 +83,83 @@ $mobile: 'screen and (max-width: 600px)';
       margin-bottom: 0;
       width: 100%;
 
-      &+ figcaption {
-        background-color: rgba(255, 255, 255, 0.85);
-        color: #000;
-        font-size: 0.8em;
-        font-style: normal;
-        font-weight: bold;
-        margin-bottom: 25px;
-        padding: 10px 0 10px 20px;
-        text-align: left;
-        width: 100%;
+      code.hljs {
+        background-color: inherit;
+
+        &.large-tag {
+          font-size: 2em;
+          line-height: 0.8;
+          overflow: hidden;
+          text-align: left;
+        }
       }
+    }
+
+    figcaption {
+      background-color: $codeCaptionBgColor;
+      color: $codeCaptionColor;
+      font-size: 0.8em;
+      font-style: normal;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding: 10px 20px;
+      text-align: left;
+      width: 100%;
+
+      a {
+        color: currentColor;
+        text-decoration: underline;
+      }
+    }
+  }
+  figure.support-table {
+    margin: 0 auto;
+    width: 900px;
+
+    table {
+      font-size: 0.9em;
+      width: 100%;
+    }
+
+    th:nth-child(2),
+    th:nth-child(3),
+    td:nth-child(2),
+    td:nth-child(3) {
+      text-align: center;
+    }
+    thead th {
+      color: $mutedColor;
+      border: 0;
+      padding-bottom: 1em;
+    }
+    th[colspan="3"] {
+      background-color: $codeBgColor;
+    }
+    .group-end td {
+      border-bottom: 0;
+      padding-bottom: 1em;
+    }
+  }
+  figure.code {
+    background-color: $codeBgColor;
+  }
+  figure.image-with-caption {
+    img {
+      border: 2px solid $mutedColor;
+      border-bottom-width: 0;
+      box-shadow: none;
+      display: block;
+      margin: 0;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    &> figcaption {
+      margin-bottom: 0;
     }
   }
   .regular-case {
     text-transform: none;
-  }
-  .subhead {
-    font-style: italic;
-    @extend .regular-case;
   }
   .plain {
     background-color: transparent;
@@ -104,6 +168,22 @@ $mobile: 'screen and (max-width: 600px)';
 /*********************************************
  * LAYOUTS
  *********************************************/
+.reveal .left-align {
+  text-align: left;
+  width: 90%;
+  margin: 0 auto;
+
+  &:not(.snug) > * + * {
+    margin-top: 100px;
+  }
+  .big-heading {
+    font-family: $headingFont;
+    font-size: 2.8em;
+  }
+  [aria-hidden="true"] {
+    color: $mutedColor;
+  }
+}
 .reveal li .twoThirdsCol {
   padding-top: 2%;
 
@@ -136,31 +216,87 @@ $mobile: 'screen and (max-width: 600px)';
   width: 100%;
 }
 .reveal .halfCol {
+  box-sizing: border-box;
   display: inline-block;
+  margin: 0 0.5%;
   width: 48%;
+  vertical-align: top;
+
+  h2, h3 {
+    text-align: left;
+  }
+  ul {
+    display: block;
+    padding: 0;
+  }
+  li {
+    margin: 0;
+    list-style-position: inside;
+  }
 }
 
-.reveal .layeredFragments {
-  margin: 0 auto;
-  min-height: 1000px;
-  position: relative;
-  width: 100%;
-
-  &>img, 
-  &>figure {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    margin: 0;
-    width: 100%;
+.reveal {
+  .word-cloud {
+      width: 300px;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+      list-style: none;
+      text-align: justify;
   }
-  &.wordcloud {
-    position: absolute;
-    top: 0;
+  .word-cloud__word {
+    display: inline-block;
+    font-size: 1.2em;
+    line-height: 1;
+    padding: 0 0.5em;
+    text-align: center;
 
-    .fragment {
+    &.x-small,
+    &.small {
+      font-weight: 100;
+    }
+    &.x-small {
+      font-size: 2em;
+      color: $wordCloudXSm;
+    }
+    &.small {
+      font-size: 3em;
+      color: $wordCloudSm;
+    }
+    &.large {
+      font-size: 4.25em;
+      color: $wordCloudLg;
+    }
+    &.x-large {
+      font-size: 4.85em;
+      letter-spacing: -0.0125em;
+      color: $wordCloudXLg;
+    }
+  }
+}
+.reveal {
+  .layeredFragments {
+    margin: 0 auto;
+    min-height: 1000px;
+    position: relative;
+    width: 100%;
+
+    &>img, 
+    &>figure {
       position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      margin: 0;
+      width: 100%;
+    }
+    &.wordcloud {
+      position: absolute;
+      top: 0;
+
+      .fragment {
+        position: absolute;
+      }
     }
   }
 }
@@ -187,7 +323,11 @@ $mobile: 'screen and (max-width: 600px)';
  *********************************************/
 
 .deque-title-slide {
-  &.slide-background:after {
+  // navigation
+  .controls {
+    bottom: 110px;
+  }
+  .slide-background:after {
     background-color: $dequeBgColor;
     bottom: 0;
     content: '';
@@ -211,7 +351,7 @@ $mobile: 'screen and (max-width: 600px)';
     width: 65%;
   }
   @media #{$tablet} {
-    &.slide-background:after {
+    .slide-background:after {
       display: none;
     }
     .left {
@@ -255,17 +395,29 @@ $mobile: 'screen and (max-width: 600px)';
     background-color: transparent;
   }
 }
+.reveal {
+  .border-top {
+    border-top: 3px solid #ccc;
+  }
+  .border-bottom {
+    border-bottom: 3px solid #ccc;
+    display: inline-block;
+    padding: 0 2em 0.5em;
+  }
+}
 #oh-hai-images {
-  margin-top: 1em;
+  display: inline-block;
+  margin-top: 0em;
   text-align: center;
 
   img, div {
-    display: inline-block;
+    // display: inline-block;
     vertical-align: middle;
   }
   div {
-    max-width: 320px;
-    margin: 0 20px 0 10px;
+    // max-width: 320px;
+    // margin: 0 20px 0 10px;
+    margin: 10px 0 0;
     text-align: center;
   }
   .angular {
@@ -273,8 +425,8 @@ $mobile: 'screen and (max-width: 600px)';
   }
   .axe {
     background-color: #fff;
-    padding: 10px;
-    width: 300px;
+    // padding: 10px;
+    width: 400px;
   }
   .gdi {
     max-width: 250px;

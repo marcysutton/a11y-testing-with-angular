@@ -1,13 +1,16 @@
-# Automated Accessibility Testing with Angular 2
+# Accessibility Testing with Angular
 
-A presentation on accessibility testing using Angular 2 and axe-core
+A presentation on automated accessibility testing in Angular 1 and Angular 2
 
 By Marcy Sutton, Senior Front-end Engineer at Deque Systems
 
 ##Presenting at:
-- AngularJS Mountain View
+- WebExpo Prague
+- Angular Connect
 
-Slide URL: [http://marcysutton.github.io/a11y-testing-angular2](http://marcysutton.github.io/a11y-testing-angular2)
+An older version of this talk was given at the AngularJS Mountain View Meetup.
+
+Slide URL: [http://marcysutton.github.io/a11y-testing-with-angular](http://marcysutton.github.io/a11y-testing-with-angular)
 
 ## Installation
 
@@ -21,7 +24,7 @@ Some reveal.js features, like external Markdown and speaker notes, require that 
 
 4. Clone the repository
    ```sh
-   $ git clone https://github.com/marcysutton/a11y-testing-angular2.git
+   $ git clone https://github.com/marcysutton/a11y-testing-with-angular.git
    ```
 
 5. Navigate to the project folder

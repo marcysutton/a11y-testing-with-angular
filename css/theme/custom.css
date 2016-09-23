@@ -344,12 +344,19 @@ body {
   font-family: Menlo, Courier, monospace;
   max-height: 520px; }
 
+.reveal pre.larger {
+  font-size: 0.75em; }
+
+.reveal pre.large {
+  font-size: 0.65em; }
+
 .reveal figcaption {
   font-weight: bold; }
 
 .reveal figure.code,
 .reveal figure.image-with-caption {
   box-sizing: border-box;
+  margin: 0 auto;
   position: relative;
   width: 100%; }
   .reveal figure.code *, .reveal figure.code *:before, .reveal figure.code *:after,
@@ -368,7 +375,7 @@ body {
       .reveal figure.code pre code.hljs.large-tag,
       .reveal figure.image-with-caption pre code.hljs.large-tag {
         font-size: 2em;
-        line-height: 0.8;
+        line-height: 1.2;
         overflow: hidden;
         text-align: left; }
   .reveal figure.code figcaption,
@@ -386,6 +393,45 @@ body {
     .reveal figure.image-with-caption figcaption a {
       color: currentColor;
       text-decoration: underline; }
+
+.reveal iframe {
+  box-shadow: 0px 0px 3px #000; }
+
+.reveal .strike {
+  text-decoration: line-through; }
+
+.reveal .overlaidHeadline {
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  width: 100%; }
+  .reveal .overlaidHeadline span {
+    color: #72a230;
+    font-size: 0.75em;
+    left: 0;
+    right: 0;
+    line-height: 0.25;
+    position: absolute; }
+    .reveal .overlaidHeadline span:before {
+      content: '^';
+      display: block;
+      line-height: 1;
+      margin-left: 1em;
+      margin-top: 0.1em; }
+
+.reveal ul.larger {
+  font-size: 1.25em;
+  line-height: 1.5; }
+
+.reveal dl {
+  margin-left: 0;
+  width: 100%; }
+  .reveal dl dt {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid; }
+  .reveal dl dd {
+    padding-top: 0.25em;
+    margin-bottom: 0.75em; }
 
 .reveal figure.support-table {
   margin: 0 auto;
@@ -428,6 +474,25 @@ body {
 
 .reveal .plain {
   background-color: transparent; }
+
+.reveal .parentheses {
+  position: relative; }
+  .reveal .parentheses:before {
+    color: #8dc63f;
+    content: '{';
+    display: block;
+    font-size: 4em;
+    margin-left: 10%;
+    top: 0;
+    position: absolute; }
+  .reveal .parentheses:after {
+    color: #8dc63f;
+    content: '}';
+    display: block;
+    font-size: 4em;
+    top: 0;
+    right: 10%;
+    position: absolute; }
 
 /*********************************************
  * LAYOUTS

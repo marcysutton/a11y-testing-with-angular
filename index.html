@@ -108,19 +108,53 @@
 						</div>
 				</section>
 
+				<section data-background-color="#fff" class="light-theme">
+					<div class="">
+						<h3 class="h2-class fancy" style="margin-bottom:0.25em">Design and develop for &lsquo;future you&rsquo;</h3>
+						<p class="subhead"><a href="https://www.microsoft.com/en-us/design/practice#toolkit">Microsoft Inclusive Design Toolkit</a></p>
+						<figure>
+							<img src="img/injury.png" alt="Permanent disability to injury or situational disability" class="plain" style="max-width: 65%;">
+						</figure>
+					</div>
+		        </section>
+
 				<section>
 					<h3 class="h1-style fancy">Guess what: you can help!</h3>
 					<p class="subhead">&hellip;by making the Internet more accessible.</p>
 				</section>
 
 				<section>
-					<h2 class="fancy">#A11y in Angular Apps</h2>
-					<ul>
+					<div style="position:relative">
+						<h2 class="h1-style fancy">#A11y in Angular Apps</h2>
+						<h2 class="h1-style fancy fragment overlaidHeadline">#A11y in <strike>Angular</strike>
+						 Apps<br>
+						 	<span>&ldquo;Client-Rendered&rdquo;</span>
+						</h2>
+					</div>
+					<ul class="larger" aria-hidden="true" style="visibility: hidden">
 						<li>Write meaningful HTML</li>
 						<li>Enable the keyboard</li>
 						<li>Handle focus</li>
 						<li>Alert the user</li>
 						<li>Coverage with tests</li>
+					</ul>
+				</section>
+<!-- 
+				<section>
+					<figure class="image-with-caption" style="margin: 0 auto; width: 1000px;">
+				        <img data-src="img/lifeOfARequestParts-khan4019.png" alt="Life of a request: Server vs. client" class="plain" style="padding-left: 10px;">
+				        <figcaption><a href="http://khan4019.github.io/HighPerformanceJSandCSS/#/5/3">Navigation Timing API</a></figcaption>
+				    </figure>
+				</section> -->
+
+				<section data-transition="none">
+					<h2 class="h1-style fancy">#A11y in <br>Client-Rendered Apps</h2>
+					<ul class="larger">
+						<li class="fragment">Write meaningful HTML</li>
+						<li class="fragment">Enable the keyboard</li>
+						<li class="fragment">Handle focus</li>
+						<li class="fragment">Alert the user</li>
+						<li class="fragment">Coverage with tests</li>
 					</ul>
 					<aside class="notes">
 					WebExpo: This stuff is all new and necessary. Accessibility basics that can be tested. How-to in ng1 and ng2.
@@ -132,11 +166,32 @@
 				</section>
 
 				<section>
-					<div class="left-align">
+					<iframe width="1280" height="640" title="Old VirginAmerica.com VoiceOver Demo" src="//www.youtube.com/embed/8ZbYJSqE0EM" frameborder="0" allowfullscreen=""></iframe>
+				</section>
+
+				<section>
+					<div class="left-align snug">
 						<h3 class="h1-style">Meaningful HTML</h3>
 						<figure class="code">
 							<pre><code class="html large-tag">
- &lt;button>Help&lt;/button>
+ &lt;label for="roundTrip">
+   &lt;input type="radio" id="roundTrip">
+   Round Trip
+ &lt;/label>
+							</code></pre>
+							<figcaption>HTML Radio Input</figcaption>
+						</figure>
+					</div>
+				</section>
+
+				<section>
+					<div class="left-align snug">
+						<h3 class="h1-style">
+							<span style="position: absolute;display: block;top: -1em;">Also</span>
+							Meaningful HTML</h3>
+						<figure class="code">
+							<pre><code class="html large-tag">
+ &lt;button>Button&lt;/button>
 							</code></pre>
 							<figcaption>HTML Button</figcaption>
 						</figure>
@@ -149,24 +204,44 @@
 				</section>
 
 				<section>
-					<h2>Keyboard support</h2>
-					<!-- some kind of demo showing tabbability -->
+					<div class="parentheses">
+						<h2>Enable the keyboard</h2>
+						<h2>Handle focus</h2>
+						<h2>Alert the user</h2>
+					</div>
 				</section>
 
 				<section>
-					<h2>Handle focus</h2>
-					<!-- show focus management that builds on keyboard support -->
+					<div class="left-align snug">
+						<h2 class="h1-style fancy">Intro to ARIA</h2>
+						<p><a href="https://www.w3.org/TR/wai-aria/">https://www.w3.org/TR/wai-aria/</a></p>
+						<dl>
+							<dt><span class="subhead">Role:</span> what is it?</dt>
+							<dd><code class="html hljs xml">
+								<span class="hljs-tag">
+									<span class="hljs-attribute">role</span>=<span class="hljs-value">"button"</span>
+								</span>
+							</code></dd>
+							<dt><span class="subhead">State:</span> what state is it in?</dt>
+							<dd><code class="html hljs xml">
+								<span class="hljs-tag">
+									<span class="hljs-attribute">aria-checked</span>=<span class="hljs-value">"false"</span>
+								</span>
+								</code></dd>
+							<dt><span class="subhead">Property:</span> what's the nature of it?</dt>
+							<dd><code class="html hljs xml">
+								<span class="hljs-tag">
+									<span class="hljs-attribute">aria-haspopup</span>=<span class="hljs-value">"true"</span> <br>
+									<span class="hljs-attribute">aria-label</span>=<span class="hljs-value">"Close modal"</span>
+								</span>
+								</code>
+							</dd>
+						</dl>
+					</div>
 				</section>
 
-				<section>
-					<h2>Alert the user</h2>
-					<!-- demonstrate the need for live regions -->
-					<!--  -->
-				</section>
-
-				<section>
-					<h2>Intro to ARIA</h2>
-					<!-- demonstrate disabled / ng-disabled -->
+				<section data-background-image="img/a11y-with-ngaria.png">
+					<h2 class="offscreen">Accessibility with ngAria: Angular 1 documentation</h2>
 				</section>
 
 				<section data-background-image="img/ngaria.png">
@@ -237,7 +312,7 @@
 					<div class="left-align snug">
 						<h3 class="h2-style">Labeling unit test</h3>
 						<figure class="code">
-						<pre style="font-size:0.75em"><code class="javascript">
+						<pre class="larger"><code class="javascript">
   it('should apply aria-hidden="true" when parent has valid label', 
   inject(function() {
 
@@ -260,7 +335,7 @@
 					<div class="left-align large-tag snug">
 						<h3 class="h2-style">Keyboard unit test</h3>
 						<figure class="code">
-						<pre style="font-size:0.75em"><code class="javascript">
+						<pre class="larger"><code class="javascript">
    it('closes on escape', inject(function($document, $mdConstant) {
       var menu = setup();
       openMenu(menu);
@@ -358,7 +433,7 @@
 					<div class="left-align snug">
 						<h3 class="h2-style">Demo App Template</h3>
 						<figure class="code">
-							<pre><code class="javascript">
+							<pre class="larger"><code class="javascript">
   &lt;md-toolbar layout="row">
 	&lt;h1 layout-align-gt-sm="center center" class="md-toolbar-tools">My Favorite Muppets&lt;/h1>
   &lt;/md-toolbar>
@@ -395,7 +470,7 @@
 					<div class="left-align snug">
 						<h3 class="h2-style">End-to-End Test</h3>
 						<figure class="code">
-						<pre><code class="javascript">
+						<pre class="larger"><code class="javascript">
   var AxeBuilder = require('axe-webdriverjs');
 
   describe('view1', function() {
@@ -436,6 +511,18 @@
 						<h2 class="big-heading" aria-hidden="true">Angular 1</h2>
 						<h2 class="big-heading">Angular 2*</h2>
 					</div>
+				</section>
+
+				<section>
+					<h2 class="fancy">Angular 2: Big differences</h2>
+					<ul class="larger">
+						<li>Component-based</li>
+						<li>TypeScript &amp; ES6</li>
+						<li>Property bindings</li>
+					</ul>
+					<aside class="notes">
+						Controllers and $scope are no longer used. They have been replaced by components and directives. Components are directives with a template.
+					</aside>
 				</section>
 
 				<section data-background-image="img/angular2-test-strategies.png">
@@ -497,15 +584,15 @@
 					</figure>
 				</section>
 
-				<section data-background-image="img/angular2-test-event-request.png">
-					<h3 class="offscreen">Angular 2 issue on Github: Creating fake event objects for testing components</h3>
+				<section data-background-image="img/ngmaterial2.png">
+					<h3 class="offscreen">Angular Material 2 Preview</h3>
 				</section>
 
 				<section>
-					<div class="left-align snug">
-						<h3 class="fancy">Angular 2 Keyboard Unit Tests</h3>
-						<img data-src="img/bleeding-edge.gif" alt="Gif with Supergirl saying I'm Bleeding?">
-					</div>
+					<figure class="image-with-caption" style="max-width: 1100px">
+						<img data-src="img/md-checkbox2-voiceover.png" alt="Material 2 checkbox operated with Voiceover">
+						<figcaption><a href="https://github.com/angular/material2/tree/master/src/components/checkbox">Material 2 checkbox using Voiceover</a></figcaption>
+					</figure>
 				</section>
 
 				<section>
@@ -513,7 +600,7 @@
 						<h3 class="fancy">Material 2 Unit Test 1/2</h3>
 						<h4>Applying a text alternative with `aria-labelledby`</h4>
 						<figure class="code">
-							<pre><code class="javascript">
+							<pre class="large"><code class="javascript">
  describe('mdCheckbox with provided aria-labelledby ', () => {
     let checkboxDebugElement: DebugElement;
     let checkboxNativeElement: HTMLElement;
@@ -539,7 +626,7 @@
 						<h3 class="fancy">Material 2 Unit Test 2/2</h3>
 						<h4>ARIA attribute watching</h4>
 						<figure class="code">
-							<pre><code class="javascript">	
+							<pre class="large"><code class="javascript">	
     it('toggles "aria-checked" on the host element', function() {
       builder.createAsync(CheckboxController).then(function(fixture) {
         let el = fixture.debugElement.query(By.css('.md-checkbox'));
@@ -562,13 +649,33 @@
 				</section>
 
 				<section>
+					<div class="left-align snug">
+						<h3 class="fancy">Angular 2 Keyboard Unit Tests</h3>
+						<img data-src="img/bleeding-edge.gif" alt="Gif with Supergirl saying I'm Bleeding?">
+					</div>
+					<aside class="notes">
+					The pain: events not supported, even click is rough
+					TypeScript woes for third-party help
+					</aside>
+				</section>
+
+				<section data-background-image="img/angular2-test-event-request.png">
+					<h3 class="offscreen">Angular 2 issue on Github: Creating fake event objects for testing components</h3>
+				</section>
+
+				<!-- <section>
+					<h3>Simulant or aXe example</h3>
+				</section>
+ -->
+				<section>
 					<h2 class="fancy">End-to-End Testing in Angular 2</h2>
 					<p class="subhead muted">~ with ~</p>
 					<h3 class="fancy h1-style">Protractor</h3>
 				</section>
 
  				<section>
-	 				<div class="left-align">
+	 				<div class="left-align snug">
+	 					<h2>Keyboard Test</h2>
 	 				<figure class="code">
 	 				<pre><code class="javascript">
   /*----- menu.e2e.ts -------*/
@@ -632,41 +739,45 @@
 						<h3 class="fancy">End-to-end Testing with aXe-core</h3>
 						<figure class="code">
 							<pre><code class="javascript">
-  require('axe-core/axe.js');
-  declare var axe: any;
+  import * as axe from 'axe-core';
   
   ...
 
-  it('should have no accessibility issues', injectAsync([ TestComponentBuilder ], (tcb: TestComponentBuilder) => {
-    return tcb.createAsync(Home).then((componentFixture: ComponentFixture) => {
-      // get ahold of the document. do we still need componentFixture or tcb?
-      const document = componentFixture.nativeElement;
+  it('should have no accessibility violations', function(done) {
+	browser.executeScript(axe.source);
 
-      axe.a11yCheck(document, null, (result) => {
-        console.log(result);
-        expect(result.violations.length).toBe(0);
-      });
-    });
-  }));
+	// Run A11Y tests in the browsers event loop.
+	browser.executeAsyncScript((resolve: any) => {
+	  return new Promise&lt;axe.AxeResults>(res => {
+	  	axe.a11yCheck(document, {}, resolve)
+	  });
+	}).then((results: any) => {
+	  if (results.violations.length > 0) {
+	    console.log(results.violations);
+	  }
+	  expect(results.violations.length).toBe(0);
+	  done();
+	});
+  });
 							</code></pre>
-							<figcaption></figcaption>
+							<figcaption>Integration test</figcaption>
 						</figure>
 					</div>
 				</section>
 
 				<section>
-					<h2>Recap</h2>
-					<ul>
-						<li>You need accessibility tests.</li>
-						<li>Unit test for keyboard support, usability basics</li>
-						<li>Use TestComponentBuilder for DOM testing</li>
-						<li>Use an API for extra a11y muscle</li>
-						<li>Prevent broken stuff from going out the door!</li>
+					<h2 class="h1-style fancy">Recap</h2>
+					<ul class="larger">
+						<li class="fragment">Accessibility is similar with all web frameworks.</li>
+						<li class="fragment">Unit tests provide a component accessibility contract.</li>
+						<li class="fragment">Use integration tests to redirect human resources.</li>
+						<li class="fragment">Use an API for extra a11y muscle.</li>
+						<li class="fragment">Prevent broken experiences from going out the door!</li>
 					</ul>
 				</section>
 
 				<section data-background-color="#ffffff">
-					<h2>Thanks!</h2>
+					<h2 class="fancy">Děkuji!</h2>
 					<h3 class="subhead"><a href="http://twitter.com/marcysutton">twitter.com/marcysutton</a></h3>
 					<h3 class="subhead"><a href="http://github.com/marcysutton">github.com/marcysutton</a></h3>
 					<img data-src="img/deque_logo_600p.jpg" alt="" style="width: 320px;">

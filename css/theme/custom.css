@@ -544,10 +544,12 @@ body {
     text-align: left; }
   .reveal .halfCol ul {
     display: block;
-    padding: 0; }
+    padding: 0;
+    margin-left: 0.5em; }
   .reveal .halfCol li {
     margin: 0;
-    list-style-position: inside; }
+    list-style-position: inside;
+    padding-left: 0em; }
 
 .reveal .word-cloud {
   width: 300px;

@@ -53,18 +53,6 @@
 				</section>
 
 				<section>
-					<h2>Kdo je Marcy Sutton?</h2>
-					<div id="oh-hai-images" class="border-top">
-						<div>
-							<img data-src="img/axe-core.png" alt="axe-core" class="axe plain">
-						</div>
-						<img data-src="img/egghead-dot-io-logo.png" alt="Egghead.io" class="egghead plain">
-						<img data-src="img/angularjs-logo.png" alt="AngularJS" class="angular plain">
-						<img data-src="img/gdi_logo_badge.png" alt="Girl Develop It" class="gdi plain">
-					</div>
-				</section>
-
-				<section>
 					<h2 class="h1-style left-align">Why Accessibility?</h2>
 					<aside class="notes">
 					1/5 of the world's population has some kind of disability
@@ -108,47 +96,13 @@
 						</div>
 				</section>
 
-				<section data-background-color="#fff" class="light-theme">
-					<div class="">
-						<h3 class="h2-class fancy" style="margin-bottom:0.25em">Design and develop for &lsquo;future you&rsquo;</h3>
-						<p class="subhead"><a href="https://www.microsoft.com/en-us/design/practice#toolkit">Microsoft Inclusive Design Toolkit</a></p>
-						<figure>
-							<img src="img/injury.png" alt="Permanent disability to injury or situational disability" class="plain" style="max-width: 65%;">
-						</figure>
-					</div>
-		        </section>
-
 				<section>
 					<h3 class="h1-style fancy">Guess what: you can help!</h3>
 					<p class="subhead">&hellip;by making the Internet more accessible.</p>
 				</section>
 
-				<section>
-					<div style="position:relative">
-						<h2 class="h1-style fancy">#A11y in Angular Apps</h2>
-						<h2 class="h1-style fancy fragment overlaidHeadline">#A11y in <strike>Angular</strike>
-						 Apps<br>
-						 	<span>&ldquo;Client-Rendered&rdquo;</span>
-						</h2>
-					</div>
-					<ul class="larger" aria-hidden="true" style="visibility: hidden">
-						<li>Write meaningful HTML</li>
-						<li>Enable the keyboard</li>
-						<li>Handle focus</li>
-						<li>Alert the user</li>
-						<li>Coverage with tests</li>
-					</ul>
-				</section>
-<!-- 
-				<section>
-					<figure class="image-with-caption" style="margin: 0 auto; width: 1000px;">
-				        <img data-src="img/lifeOfARequestParts-khan4019.png" alt="Life of a request: Server vs. client" class="plain" style="padding-left: 10px;">
-				        <figcaption><a href="http://khan4019.github.io/HighPerformanceJSandCSS/#/5/3">Navigation Timing API</a></figcaption>
-				    </figure>
-				</section> -->
-
 				<section data-transition="none">
-					<h2 class="h1-style fancy">#A11y in <br>Client-Rendered Apps</h2>
+					<h2 class="h1-style fancy">#A11y in Angular Apps</h2>
 					<ul class="larger">
 						<li class="fragment">Write meaningful HTML</li>
 						<li class="fragment">Enable the keyboard</li>
@@ -257,11 +211,6 @@
 					<!-- TRY NOT TO TRASH ngARIA BUT EXPLAIN WHY TESTING IS BETTER -->
 				</section>
 
-				<!--<section>
-					<h2 style="margin-bottom: 0;">It's been a while&hellip;</h2>
-					<img data-src="img/Angular-Material-RadioButtons.png" alt="A really old version of Angular Material" class="plain">
-				</section>-->
-				
 				<section>
 					<h2 class="h1-style fancy">
 						<span class="subhead smaller">Build accessibility into your workflow <br><span class="muted">~ with ~</span></span>
@@ -306,29 +255,6 @@
 					offscreen/attribute text computation (stuff you don't see)
 					ARIA default values for custom elements
 					</aside>
-				</section>
-
-				<section>
-					<div class="left-align snug">
-						<h3 class="h2-style">Labeling unit test</h3>
-						<figure class="code">
-						<pre class="larger"><code class="javascript">
-  it('should apply aria-hidden="true" when parent has valid label', 
-  inject(function() {
-
-    var el = make('&lt;md-radio-button aria-label="Squishy Avatar" '+
-    				   'role="radio" tabindex="0"> '+
-                '&lt;div class="md-container">&lt;/div> '+
-                  '&lt;div class="md-label"> '+
-                  '&lt;md-icon md-svg-icon="android">&lt;/md-icon> '+
-                '&lt;/div>&lt;/md-radio-button>');
-
-    expect(el.find('md-icon').attr('aria-hidden')).toEqual('true');
-  }));
-						</code></pre>
-						<figcaption><a href="https://github.com/angular/material/blob/master/src/components/icon/icon.spec.js">mdIcon Spec</a></figcaption>
-						</figure>
-					</div>
 				</section>
 
 				<section>
@@ -777,7 +703,7 @@
 				</section>
 
 				<section data-background-color="#ffffff">
-					<h2 class="fancy">Děkuji!</h2>
+					<h2 class="fancy">Thanks!</h2>
 					<h3 class="subhead"><a href="http://twitter.com/marcysutton">twitter.com/marcysutton</a></h3>
 					<h3 class="subhead"><a href="http://github.com/marcysutton">github.com/marcysutton</a></h3>
 					<img data-src="img/deque_logo_600p.jpg" alt="" style="width: 320px;">

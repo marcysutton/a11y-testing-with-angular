@@ -53,6 +53,18 @@
 				</section>
 
 				<section>
+					<h2>Who is Marcy Sutton?</h2>
+					<div id="oh-hai-images" class="border-top">
+						<div>
+							<img data-src="img/axe-core.png" alt="axe-core" class="axe plain">
+						</div>
+						<img data-src="img/egghead-dot-io-logo.png" alt="Egghead.io" class="egghead plain">
+						<img data-src="img/angularjs-logo.png" alt="AngularJS" class="angular plain">
+						<img data-src="img/gdi_logo_badge.png" alt="Girl Develop It" class="gdi plain">
+					</div>
+				</section>
+
+				<section>
 					<h2 class="h1-style left-align">Why Accessibility?</h2>
 					<aside class="notes">
 					1/5 of the world's population has some kind of disability
@@ -95,6 +107,16 @@
 							</ul>
 						</div>
 				</section>
+
+				<section data-background-color="#fff" class="light-theme">
+					<div class="">
+						<h3 class="h2-class fancy" style="margin-bottom:0.25em">Design and develop for &lsquo;future you&rsquo;</h3>
+						<p class="subhead"><a href="https://www.microsoft.com/en-us/design/practice#toolkit">Microsoft Inclusive Design Toolkit</a></p>
+						<figure>
+							<img src="img/injury.png" alt="Permanent disability to injury or situational disability" class="plain" style="max-width: 65%;">
+						</figure>
+					</div>
+		        </section>
 
 				<section>
 					<h3 class="h1-style fancy">Guess what: you can help!</h3>
@@ -255,6 +277,29 @@
 					offscreen/attribute text computation (stuff you don't see)
 					ARIA default values for custom elements
 					</aside>
+				</section>
+
+				<section>
+					<div class="left-align snug">
+						<h3 class="h2-style">Labeling unit test</h3>
+						<figure class="code">
+						<pre class="larger"><code class="javascript">
+  it('should apply aria-hidden="true" when parent has valid label', 
+  inject(function() {
+
+    var el = make('&lt;md-radio-button aria-label="Squishy Avatar" '+
+    				   'role="radio" tabindex="0"> '+
+                '&lt;div class="md-container">&lt;/div> '+
+                  '&lt;div class="md-label"> '+
+                  '&lt;md-icon md-svg-icon="android">&lt;/md-icon> '+
+                '&lt;/div>&lt;/md-radio-button>');
+
+    expect(el.find('md-icon').attr('aria-hidden')).toEqual('true');
+  }));
+						</code></pre>
+						<figcaption><a href="https://github.com/angular/material/blob/master/src/components/icon/icon.spec.js">mdIcon Spec</a></figcaption>
+						</figure>
+					</div>
 				</section>
 
 				<section>
@@ -524,7 +569,7 @@
 
 				<section>
 					<div class="left-align snug">
-						<h3 class="fancy">Material 2 Unit Test 1/2</h3>
+						<h3 class="fancy">Angular 2 Unit Test 1/2</h3>
 						<h4>Applying a text alternative with `aria-labelledby`</h4>
 						<figure class="code">
 							<pre class="large"><code class="javascript">
@@ -535,22 +580,30 @@
 
     it('should use the provided aria-labelledby', () => {
       fixture = TestBed.createComponent(CheckboxWithAriaLabelledby);
+      
       checkboxDebugElement = fixture.debugElement.query(By.directive(MdCheckbox));
       checkboxNativeElement = checkboxDebugElement.nativeElement;
+
       inputElement = &lt;HTMLInputElement>checkboxNativeElement.querySelector('input');
 
       fixture.detectChanges();
       expect(inputElement.getAttribute('aria-labelledby')).toBe('some-id');
   });
+
+  /** Simple test component with aria-labelledby set. */
+  @Component({
+    template: `<md-checkbox aria-labelledby="some-id"></md-checkbox>`
+  })
+  class CheckboxWithAriaLabelledby {}
 					</code></pre>
-					<figcaption><a href="https://github.com/angular/material2/blob/master/src/lib/checkbox/checkbox.spec.ts">Checkbox Spec</a></figcaption>
+					<figcaption><a href="https://github.com/angular/material2/blob/master/src/lib/checkbox/checkbox.spec.ts">Material 2 Checkbox Spec</a></figcaption>
 					</figure>
 					</div>
 				</section>
 
 				<section>
 					<div class="left-align snug">
-						<h3 class="fancy">Material 2 Unit Test 2/2</h3>
+						<h3 class="fancy">Angular 2 Unit Test 2/2</h3>
 						<h4>ARIA attribute watching</h4>
 						<figure class="code">
 							<pre class="large"><code class="javascript">	
@@ -570,7 +623,7 @@
       });
     });
 							</code></pre>
-							<figcaption>Older Material 2 Checkbox</figcaption>
+							<figcaption>Older Material 2 Checkbox Spec</figcaption>
 						</figure>
 					</div>
 				</section>
@@ -590,10 +643,34 @@
 					<h3 class="offscreen">Angular 2 issue on Github: Creating fake event objects for testing components</h3>
 				</section>
 
-				<!-- <section>
-					<h3>Simulant or aXe example</h3>
+				<section>
+	 				<div class="left-align snug">
+						<h3>Angular 2 Keyboard Test</h3>
+						<figure class="code">
+							<pre class="large"><code class="javascript">
+    it('should respond to keyboard events', () => {
+      let fixture = TestBed.createComponent(Board);
+      fixture.detectChanges();
+
+      var event1 = new KeyboardEvent('keydown', { key: '1' });
+
+      var event3 = new KeyboardEvent('keydown', { key: '3' });
+
+      window.dispatchEvent(event1);
+      window.dispatchEvent(event3);
+      fixture.detectChanges();
+
+      let board = fixture.nativeElement;
+      let box = board.querySelectorAll('.ttt-box')[2];
+
+      expect(box.textContent).toContain('x');
+    });
+						</code></pre>
+						<figcaption><a href="https://github.com/juliemr/angularconnect-2016/blob/master/src/app/tictactoe.spec.ts#L100">Tic-tac-toe Game Spec by Julie Ralph</a></figcaption>
+					</figure>
+					</div>
 				</section>
- -->
+
 				<section>
 					<h2 class="fancy">End-to-End Testing in Angular 2</h2>
 					<p class="subhead muted">~ with ~</p>
@@ -602,9 +679,9 @@
 
  				<section>
 	 				<div class="left-align snug">
-	 					<h2>Keyboard Test</h2>
+	 					<h2>End-to-End Keyboard Test</h2>
 	 				<figure class="code">
-	 				<pre><code class="javascript">
+	 				<pre class="large"><code class="javascript">
   /*----- menu.e2e.ts -------*/
   import { MenuPage } from './menu-page';
 
@@ -665,7 +742,7 @@
 					<div class="left-align snug">
 						<h3 class="fancy">End-to-end Testing with aXe-core</h3>
 						<figure class="code">
-							<pre><code class="javascript">
+							<pre class="large"><code class="javascript">
   import * as axe from 'axe-core';
   
   ...
@@ -687,7 +764,7 @@
 	});
   });
 							</code></pre>
-							<figcaption>Integration test</figcaption>
+							<figcaption>Protractor test</figcaption>
 						</figure>
 					</div>
 				</section>
